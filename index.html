@@ -50,6 +50,7 @@
     font-family:'Tajawal', sans-serif;
     color:var(--text-light);
     overflow-x:hidden;
+    font-size: 16px; /* رفع الحجم الافتراضي للخط لراحة العين */
   }
 
   header.app-header, .hero, .tabs-bar, footer.app-footer{
@@ -150,8 +151,8 @@
     transform:translateY(8px);
     transition:opacity .6s ease, transform .6s ease;
     position:relative;
-    max-width: 1360px; /* تحديد العرض لتفادي تمدد الصفحة المفرط */
-    margin: 0 auto;    /* لتوسيط الحاوية في منتصف الشاشة */
+    max-width: 1200px; /* تقليص الحاوية لتفادي التباعد المفرط على الشاشات الكبيرة */
+    margin: 0 auto;
     width: 100%;
   }
   #app.visible{
@@ -207,7 +208,7 @@
     align-items:center;
     justify-content:space-between;
     gap:12px;
-    padding:10px clamp(14px, 4vw, 40px);
+    padding:12px clamp(16px, 4vw, 40px);
     margin:14px clamp(14px, 4vw, 40px) 0;
     border-radius:16px;
     background:var(--glass-bg);
@@ -222,86 +223,86 @@
   .brand{
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:12px;
   }
   .brand-emblem{
-    width:34px;height:34px;
+    width:42px;height:42px; /* زيادة الحجم */
     border-radius:50%;
     border:1.5px solid var(--gold-500);
     display:flex;align-items:center;justify-content:center;
     font-family:'Cairo',sans-serif;
     font-weight:800;
-    font-size:16.25px;
+    font-size:18px; /* تكبير الخط */
     color:var(--gold-300);
     background:rgba(201,162,39,0.08);
     flex-shrink:0;
   }
   .brand-text h1{
     font-family:'Cairo', sans-serif;
-    font-size:18.125px;
+    font-size:22px; /* تكبير اسم المنصة */
     font-weight:800;
     color:var(--text-light);
     letter-spacing:.3px;
   }
   .brand-text span{
     display:block;
-    font-size:12.5px;
+    font-size:14px; /* تكبير النص الوصفي الصغير */
     font-weight:500;
     color:var(--text-muted);
-    margin-top:1px;
+    margin-top:2px;
   }
   .header-status{
     display:flex;
     align-items:center;
     gap:6px;
-    font-size:13.75px;
+    font-size:14px;
     font-weight:500;
     color:var(--text-muted);
     background:var(--glass-bg-strong);
     border:1px solid var(--glass-border);
-    padding:6px 11px;
+    padding:8px 14px;
     border-radius:999px;
     backdrop-filter:blur(10px);
   }
   .header-status .dot{
-    width:6px;height:6px;border-radius:50%;
+    width:8px;height:8px;border-radius:50%;
     background:#3FBF8F;
     box-shadow:0 0 8px #3FBF8F;
   }
 
   /* ===== قسم البطل ===== */
   .hero{
-    padding:34px clamp(16px, 5vw, 56px) 8px;
+    padding:40px clamp(16px, 5vw, 56px) 12px;
   }
   .hero-eyebrow{
-    font-size:12.5px;
+    font-size:14px; /* تكبير كلمة "مرحباً بك" */
     color:var(--gold-300);
     letter-spacing:1.5px;
     font-weight:700;
-    margin-bottom:10px;
+    margin-bottom:12px;
   }
   .hero h2{
     font-family:'Cairo', sans-serif;
     font-weight:800;
-    font-size:clamp(16px, 1.9vw, 20px);
+    font-size:clamp(22px, 2.5vw, 34px); /* تكبير ملموس لعنوان الترحيب الرئيسي */
     color:var(--text-light);
-    max-width:640px;
-    line-height:1.55;
+    max-width:720px;
+    line-height:1.5;
   }
   .hero p{
-    margin-top:10px;
+    margin-top:14px;
     color:var(--text-muted);
-    font-size:14.5px;
+    font-size:16.5px; /* تكبير النص الوصفي الرئيسي */
     font-weight:500;
-    max-width:560px;
-    line-height:1.9;
+    max-width:680px;
+    line-height:1.8;
   }
 
   /* ===== التبويبات ===== */
   .tabs-bar{
     display:flex;
-    gap:10px;
-    padding:26px clamp(16px, 5vw, 56px) 6px;
+    gap:12px;
+    padding:30px clamp(16px, 5vw, 56px) 8px;
     overflow-x:auto;
     scrollbar-width:none;
   }
@@ -310,11 +311,11 @@
     flex-shrink:0;
     font-family:'Tajawal', sans-serif;
     font-weight:700;
-    font-size:14px;
+    font-size:15px; /* تكبير خطوط التبويبات */
     color:var(--text-muted);
     background:var(--glass-bg);
     border:1px solid var(--glass-border);
-    padding:11px 20px;
+    padding:12px 24px; /* زيادة مساحة النقر */
     border-radius:999px;
     backdrop-filter:blur(10px);
     cursor:pointer;
@@ -342,8 +343,10 @@
   }
   .cards-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(270px, 1fr));
-    gap:22px;
+    /* التعديل هنا: جعل الحد الأدنى للبطاقة 300px واستخدام auto-fit لملء السطر وتوسيط العناصر */
+    grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    gap:28px;
+    justify-content:center;
   }
   .tab-panel{ display:none; }
   .tab-panel.active{
@@ -372,7 +375,7 @@
   }
   .card-media{
     position:relative;
-    height:150px;
+    height:170px; /* زيادة ارتفاع الصورة قليلاً */
     overflow:hidden;
   }
   .card-media img{
@@ -395,35 +398,35 @@
     top:12px;
     right:12px;
     z-index:2;
-    font-size:11px;
+    font-size:12px;
     font-weight:700;
     color:var(--navy-900);
     background:var(--gold-300);
-    padding:4px 10px;
+    padding:4px 12px;
     border-radius:999px;
   }
   .card-body{
-    padding:16px 18px 20px;
+    padding:20px 22px 24px; /* زيادة الحشوة الداخلية للبطاقة */
   }
   .card-body h3{
     font-family:'Cairo', sans-serif;
-    font-size:16px;
+    font-size:18px; /* تكبير عناوين الخدمات */
     font-weight:700;
     color:var(--text-light);
-    margin-bottom:6px;
+    margin-bottom:8px;
   }
   .card-body p{
-    font-size:13px;
+    font-size:14.5px; /* تكبير نصوص البطاقة */
     font-weight:500;
     color:var(--text-muted);
     line-height:1.8;
   }
   .card-cta{
-    margin-top:14px;
+    margin-top:16px;
     display:inline-flex;
     align-items:center;
     gap:6px;
-    font-size:13px;
+    font-size:14.5px; /* تكبير رابط الانتقال */
     font-weight:700;
     color:var(--gold-300);
     cursor:pointer;
@@ -441,19 +444,19 @@
   /* ===== مربع البحث ===== */
   .search-box{
     position:relative;
-    max-width:460px;
-    margin-top:22px;
+    max-width:520px; /* زيادة عرض شريط البحث */
+    margin-top:26px;
   }
   .search-box input{
     width:100%;
     font-family:'Tajawal', sans-serif;
-    font-size:14px;
+    font-size:16px; /* تكبير حجم خط شريط البحث لمنع ظهورها بشكل صغير */
     color:var(--text-light);
     background:var(--glass-bg);
     border:1px solid var(--glass-border);
     backdrop-filter:blur(10px);
     border-radius:12px;
-    padding:13px 44px 13px 40px;
+    padding:14px 48px 14px 44px;
     outline:none;
     transition:border-color .25s ease, background .25s ease;
   }
@@ -467,23 +470,23 @@
   .search-box .search-icon{
     position:absolute;
     top:50%;
-    right:15px;
+    right:16px;
     transform:translateY(-50%);
-    width:16px;height:16px;
+    width:18px;height:18px;
     color:var(--text-muted);
     pointer-events:none;
   }
   .search-box .search-clear{
     position:absolute;
     top:50%;
-    left:12px;
+    left:14px;
     transform:translateY(-50%);
     width:24px;height:24px;
     border-radius:50%;
     border:none;
     background:transparent;
     color:var(--text-muted);
-    font-size:16px;
+    font-size:18px;
     line-height:1;
     cursor:pointer;
     display:none;
@@ -498,7 +501,7 @@
   }
   .search-meta{
     margin-top:10px;
-    font-size:12.5px;
+    font-size:14px;
     font-weight:500;
     color:var(--text-muted);
     min-height:16px;
@@ -510,7 +513,7 @@
     display:none;
     text-align:center;
     color:var(--text-muted);
-    font-size:14px;
+    font-size:15px;
     font-weight:500;
     padding:50px 10px;
   }
@@ -566,13 +569,13 @@
   }
   .footer-col h4{
     font-family:'Cairo', sans-serif;
-    font-size:18.75px;
+    font-size:20px; /* تكبير عناوين الفوتر */
     font-weight:800;
     color:var(--text-light);
   }
   .footer-col h5{
     font-family:'Cairo', sans-serif;
-    font-size:16.25px;
+    font-size:17px;
     font-weight:700;
     color:var(--gold-300);
     letter-spacing:.3px;
@@ -595,7 +598,7 @@
     display:inline-flex;
     align-items:center;
     gap:8px;
-    font-size:15.625px;
+    font-size:15px;
     font-weight:500;
     color:var(--text-muted);
     background:transparent;
@@ -618,7 +621,7 @@
   .footer-col ul li a{
     color:var(--text-muted);
     text-decoration:none;
-    font-size:16.875px;
+    font-size:15px; /* تكبير الروابط المساعدة */
     font-weight:500;
     transition:color .25s ease;
   }
@@ -635,7 +638,7 @@
     display:flex;
     align-items:center;
     gap:8px;
-    font-size:16.25px;
+    font-size:14.5px;
     font-weight:500;
     color:var(--text-muted);
   }
@@ -659,7 +662,7 @@
     flex-wrap:wrap;
     padding:18px 0 22px;
     border-top:1px solid rgba(255,255,255,0.08);
-    font-size:15px;
+    font-size:14px;
     font-weight:500;
     color:var(--text-muted);
   }
