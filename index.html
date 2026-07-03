@@ -39,15 +39,11 @@
 
   html,body{
     height:100%;
-    background:
-      radial-gradient(1200px 600px at 15% -10%, rgba(201,162,39,0.10), transparent 60%),
-      radial-gradient(1000px 700px at 110% 10%, rgba(26,92,114,0.25), transparent 55%),
-      linear-gradient(160deg, rgba(8,28,48,0.94) 0%, rgba(15,48,85,0.92) 45%, rgba(20,64,110,0.9) 100%),
-      url('bg-dark.jpg');
-    background-size:auto, auto, auto, cover;
-    background-position:center, center, center, center;
-    background-repeat:no-repeat, no-repeat, no-repeat, no-repeat;
-    background-attachment:fixed, fixed, fixed, fixed;
+    background: url('bg-dark.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family:'Tajawal', sans-serif;
     color:var(--text-light);
     overflow-x:hidden;
@@ -55,12 +51,8 @@
 
   html[data-theme="light"],
   html[data-theme="light"] body{
-    background-image:
-      radial-gradient(1200px 600px at 15% -10%, rgba(201,162,39,0.08), transparent 60%),
-      radial-gradient(1000px 700px at 110% 10%, rgba(26,92,114,0.06), transparent 55%),
-      linear-gradient(160deg, rgba(247,249,251,0.9) 0%, rgba(240,243,246,0.88) 45%, rgba(233,238,243,0.86) 100%),
-      url('bg-light.jpg');
-    background-size:auto, auto, auto, cover;
+    background-image: url('bg-light.jpg');
+    background-size: cover;
   }
 
   /* ===== شاشة التحميل ===== */
@@ -1491,4 +1483,3 @@
 
 </body>
 </html>
-
