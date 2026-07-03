@@ -762,6 +762,234 @@
     outline-offset:3px;
   }
 
+  /* ===== زر إمكانية الوصول ===== */
+  .a11y-toggle{
+    width:32px;height:32px;
+    border-radius:50%;
+    border:1px solid var(--glass-border);
+    background:var(--glass-bg-strong);
+    color:var(--gold-300);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    backdrop-filter:blur(10px);
+    transition:border-color .25s ease, background .25s ease;
+    flex-shrink:0;
+  }
+  .a11y-toggle svg{ width:16px;height:16px; }
+  .a11y-toggle:hover{ border-color:var(--gold-500); }
+  .a11y-toggle:focus-visible{
+    outline:2px solid var(--gold-500);
+    outline-offset:3px;
+  }
+
+  /* ===== نافذة إعدادات إمكانية الوصول ===== */
+  .a11y-modal{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .25s ease, visibility .25s ease;
+  }
+  .a11y-modal.show{
+    opacity:1;
+    visibility:visible;
+  }
+  .a11y-modal-backdrop{
+    position:absolute;
+    inset:0;
+    background:rgba(3,14,28,0.6);
+    backdrop-filter:blur(4px);
+  }
+  .a11y-modal-panel{
+    position:relative;
+    z-index:1;
+    width:min(400px, 100%);
+    max-height:86vh;
+    overflow-y:auto;
+    background:var(--navy-800);
+    border:1px solid var(--glass-border);
+    border-radius:18px;
+    box-shadow:var(--shadow-deep);
+    padding:22px;
+    transform:translateY(12px);
+    transition:transform .3s ease;
+  }
+  .a11y-modal.show .a11y-modal-panel{
+    transform:translateY(0);
+  }
+  .a11y-modal-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:18px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--glass-border);
+  }
+  .a11y-modal-header h3{
+    font-family:'Cairo', sans-serif;
+    font-size:16.5px;
+    font-weight:800;
+    color:var(--text-light);
+  }
+  .a11y-modal-close{
+    width:30px;height:30px;
+    border-radius:50%;
+    border:1px solid var(--glass-border);
+    background:transparent;
+    color:var(--text-muted);
+    font-size:18px;
+    line-height:1;
+    cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .a11y-modal-close:hover{ color:var(--gold-300); border-color:var(--gold-500); }
+  .a11y-modal-close:focus-visible{
+    outline:2px solid var(--gold-500);
+    outline-offset:2px;
+  }
+  .a11y-option{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    padding:14px 0;
+    border-bottom:1px solid var(--glass-border);
+  }
+  .a11y-option:last-of-type{ border-bottom:none; }
+  .a11y-option-label{
+    font-size:14.5px;
+    font-weight:500;
+    color:var(--text-light);
+  }
+  .a11y-stepper{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--glass-bg);
+    border:1px solid var(--glass-border);
+    border-radius:999px;
+    padding:5px 8px;
+  }
+  .a11y-stepper button{
+    width:26px;height:26px;
+    border-radius:50%;
+    border:none;
+    background:var(--glass-bg-strong);
+    color:var(--text-light);
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .a11y-stepper button:hover{ color:var(--gold-300); }
+  .a11y-stepper button:focus-visible{
+    outline:2px solid var(--gold-500);
+    outline-offset:2px;
+  }
+  .a11y-stepper span{
+    min-width:42px;
+    text-align:center;
+    font-size:13px;
+    font-weight:700;
+    color:var(--text-muted);
+  }
+  .a11y-switch{
+    width:44px;height:25px;
+    border-radius:999px;
+    border:1px solid var(--glass-border);
+    background:var(--glass-bg);
+    cursor:pointer;
+    position:relative;
+    flex-shrink:0;
+    transition:background .25s ease, border-color .25s ease;
+  }
+  .a11y-switch-knob{
+    position:absolute;
+    top:2px;
+    right:2px;
+    width:19px;height:19px;
+    border-radius:50%;
+    background:var(--text-muted);
+    transition:transform .25s ease, background .25s ease;
+  }
+  .a11y-switch[aria-checked="true"]{
+    background:linear-gradient(120deg, var(--gold-300), var(--gold-500));
+    border-color:transparent;
+  }
+  .a11y-switch[aria-checked="true"] .a11y-switch-knob{
+    transform:translateX(-19px);
+    background:var(--navy-900);
+  }
+  .a11y-switch:focus-visible{
+    outline:2px solid var(--gold-500);
+    outline-offset:2px;
+  }
+  .a11y-reset{
+    margin-top:18px;
+    width:100%;
+    padding:11px;
+    border-radius:12px;
+    border:1px solid var(--glass-border);
+    background:transparent;
+    color:var(--text-muted);
+    font-family:'Tajawal', sans-serif;
+    font-size:13.5px;
+    font-weight:700;
+    cursor:pointer;
+    transition:border-color .25s ease, color .25s ease;
+  }
+  .a11y-reset:hover{ color:var(--gold-300); border-color:var(--gold-500); }
+  .a11y-reset:focus-visible{
+    outline:2px solid var(--gold-500);
+    outline-offset:2px;
+  }
+
+  /* ===== وضع التباين العالي ===== */
+  html.a11y-contrast{
+    --text-light:#000000;
+    --text-muted:#000000;
+    --glass-bg:#FFFFFF;
+    --glass-bg-strong:#FFFFFF;
+    --glass-border:#000000;
+    --gold-300:#7A5B00;
+    --gold-500:#5C4400;
+    --navy-900:#FFFFFF;
+    --navy-800:#FFFFFF;
+    --navy-700:#FFFFFF;
+    --shadow-deep:none;
+  }
+  html.a11y-contrast body{
+    background:#FFFFFF !important;
+  }
+  html.a11y-contrast header.app-header,
+  html.a11y-contrast .tab-btn,
+  html.a11y-contrast .service-card,
+  html.a11y-contrast .search-box input,
+  html.a11y-contrast footer.app-footer,
+  html.a11y-contrast .a11y-modal-panel{
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+    border-width:2px !important;
+  }
+  html.a11y-contrast .watermark-seal{ display:none !important; }
+  html.a11y-contrast .card-media::after{ display:none !important; }
+  html.a11y-contrast *{ text-shadow:none !important; }
+
+  /* ===== وضع تعطيل الحركات ===== */
+  html.a11y-reduce-motion *{
+    animation-duration:0.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.001ms !important;
+    scroll-behavior:auto !important;
+  }
+
   /* ===== شاشة الانتقال بين الصفحات ===== */
   #page-transition{
     position:fixed;
@@ -859,6 +1087,9 @@
         <button id="theme-toggle" class="theme-toggle" type="button" data-i18n-aria="themeToggleAria" aria-label="التبديل إلى الوضع الفاتح">
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg>
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path></svg>
+        </button>
+        <button id="a11y-toggle" class="a11y-toggle" type="button" data-i18n-aria="a11yToggleAria" aria-label="إعدادات إمكانية الوصول" aria-haspopup="dialog">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
         </button>
         <button type="button" id="lang-toggle" class="footer-lang" aria-label="Switch to English">English</button>
       </div>
@@ -1180,7 +1411,6 @@
           <ul>
             <li><a href="page22.html" tabindex="0" data-i18n="linkPrivacy">سياسة الخصوصية</a></li>
             <li><a href="page23.html" tabindex="0" data-i18n="linkTerms">الشروط والأحكام</a></li>
-            <li><a href="page24.html" tabindex="0" data-i18n="linkAccessibility">إمكانية الوصول</a></li>
           </ul>
         </nav>
 
@@ -1199,6 +1429,42 @@
         <span data-i18n="copyright">جميع الحقوق محفوظة © 2026 منصة خدماتي — تم إعدادها بكل شغف و حب للوطن</span>
       </div>
     </footer>
+
+    <!-- ===== نافذة إعدادات إمكانية الوصول ===== -->
+    <div class="a11y-modal" id="a11y-modal" role="dialog" aria-modal="true" aria-labelledby="a11y-modal-title" aria-hidden="true">
+      <div class="a11y-modal-backdrop" id="a11y-modal-backdrop"></div>
+      <div class="a11y-modal-panel">
+        <div class="a11y-modal-header">
+          <h3 id="a11y-modal-title" data-i18n="a11yTitle">إعدادات إمكانية الوصول</h3>
+          <button type="button" class="a11y-modal-close" id="a11y-modal-close" data-i18n-aria="a11yCloseAria" aria-label="إغلاق">×</button>
+        </div>
+
+        <div class="a11y-option">
+          <span class="a11y-option-label" data-i18n="a11yFontSize">حجم الخط</span>
+          <div class="a11y-stepper">
+            <button type="button" id="a11y-font-decrease" data-i18n-aria="a11yFontDecreaseAria" aria-label="تصغير حجم الخط">−</button>
+            <span id="a11y-font-value">100%</span>
+            <button type="button" id="a11y-font-increase" data-i18n-aria="a11yFontIncreaseAria" aria-label="تكبير حجم الخط">+</button>
+          </div>
+        </div>
+
+        <div class="a11y-option">
+          <span class="a11y-option-label" data-i18n="a11yHighContrast">وضع التباين العالي</span>
+          <button type="button" class="a11y-switch" id="a11y-contrast-toggle" role="switch" aria-checked="false" data-i18n-aria="a11yHighContrast" aria-label="وضع التباين العالي">
+            <span class="a11y-switch-knob"></span>
+          </button>
+        </div>
+
+        <div class="a11y-option">
+          <span class="a11y-option-label" data-i18n="a11yReduceMotion">تعطيل الحركات والانتقالات</span>
+          <button type="button" class="a11y-switch" id="a11y-motion-toggle" role="switch" aria-checked="false" data-i18n-aria="a11yReduceMotion" aria-label="تعطيل الحركات والانتقالات">
+            <span class="a11y-switch-knob"></span>
+          </button>
+        </div>
+
+        <button type="button" class="a11y-reset" id="a11y-reset-btn" data-i18n="a11yReset">إعادة الضبط الافتراضي</button>
+      </div>
+    </div>
 
   </div>
 
@@ -1222,11 +1488,14 @@
 
     // ===== حركة الختم المائي عند التمرير (parallax خفيف) =====
     const seal = document.getElementById('watermark-seal');
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const systemPrefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let a11yMotionDisabled = false;
+    function reduceMotion(){ return systemPrefersReducedMotion || a11yMotionDisabled; }
 
-    if (seal && !prefersReducedMotion) {
+    if (seal) {
       let ticking = false;
       window.addEventListener('scroll', () => {
+        if (reduceMotion()) return;
         if (!ticking) {
           window.requestAnimationFrame(() => {
             const offset = window.scrollY * 0.06;
@@ -1245,7 +1514,7 @@
       backToTop.classList.toggle('show', window.scrollY > 420);
     });
     backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+      window.scrollTo({ top: 0, behavior: reduceMotion() ? 'auto' : 'smooth' });
     });
 
     // ===== البحث عن خدمة باسمها =====
@@ -1329,7 +1598,7 @@
       requestAnimationFrame(() => {
         const original = document.getElementById(targetId);
         if (original){
-          original.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'center' });
+          original.scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'center' });
           original.classList.add('highlight-flash');
           setTimeout(() => original.classList.remove('highlight-flash'), 1600);
         }
@@ -1349,6 +1618,114 @@
         // تجاهل بأمان إذا كان التخزين غير متاح
       }
     });
+
+    // ===== إعدادات إمكانية الوصول =====
+    const A11Y_STORAGE_KEY = 'khadamati-a11y';
+    const a11yToggle = document.getElementById('a11y-toggle');
+    const a11yModal = document.getElementById('a11y-modal');
+    const a11yModalClose = document.getElementById('a11y-modal-close');
+    const a11yModalBackdrop = document.getElementById('a11y-modal-backdrop');
+    const a11yFontValue = document.getElementById('a11y-font-value');
+    const a11yFontDecrease = document.getElementById('a11y-font-decrease');
+    const a11yFontIncrease = document.getElementById('a11y-font-increase');
+    const a11yContrastToggle = document.getElementById('a11y-contrast-toggle');
+    const a11yMotionToggle = document.getElementById('a11y-motion-toggle');
+    const a11yResetBtn = document.getElementById('a11y-reset-btn');
+
+    let a11yFontScale = 1;
+    let a11yContrastEnabled = false;
+    // a11yMotionDisabled معرّف مسبقًا أعلى الملف ويُستخدم هنا أيضًا
+
+    function applyFontScale(){
+      const percent = Math.round(a11yFontScale * 100);
+      document.documentElement.style.zoom = percent + '%';
+      a11yFontValue.textContent = percent + '%';
+    }
+
+    function applyContrast(enabled){
+      a11yContrastEnabled = enabled;
+      document.documentElement.classList.toggle('a11y-contrast', enabled);
+      a11yContrastToggle.setAttribute('aria-checked', String(enabled));
+    }
+
+    function applyMotion(disabled){
+      a11yMotionDisabled = disabled;
+      document.documentElement.classList.toggle('a11y-reduce-motion', disabled);
+      a11yMotionToggle.setAttribute('aria-checked', String(disabled));
+    }
+
+    function saveA11ySettings(){
+      try {
+        localStorage.setItem(A11Y_STORAGE_KEY, JSON.stringify({
+          fontScale: a11yFontScale,
+          contrast: a11yContrastEnabled,
+          motion: a11yMotionDisabled
+        }));
+      } catch (err) {
+        // تجاهل بأمان إذا كان التخزين غير متاح
+      }
+    }
+
+    function loadA11ySettings(){
+      try {
+        const raw = localStorage.getItem(A11Y_STORAGE_KEY);
+        if (!raw) return;
+        const saved = JSON.parse(raw);
+        if (typeof saved.fontScale === 'number') a11yFontScale = saved.fontScale;
+        if (typeof saved.contrast === 'boolean') applyContrast(saved.contrast);
+        if (typeof saved.motion === 'boolean') applyMotion(saved.motion);
+      } catch (err) {
+        // تجاهل بأمان إذا كانت البيانات المحفوظة غير صالحة
+      }
+      applyFontScale();
+    }
+
+    function openA11yModal(){
+      a11yModal.classList.add('show');
+      a11yModal.setAttribute('aria-hidden', 'false');
+    }
+    function closeA11yModal(){
+      a11yModal.classList.remove('show');
+      a11yModal.setAttribute('aria-hidden', 'true');
+    }
+
+    a11yToggle.addEventListener('click', openA11yModal);
+    a11yModalClose.addEventListener('click', closeA11yModal);
+    a11yModalBackdrop.addEventListener('click', closeA11yModal);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && a11yModal.classList.contains('show')) closeA11yModal();
+    });
+
+    a11yFontDecrease.addEventListener('click', () => {
+      a11yFontScale = Math.max(0.8, Math.round((a11yFontScale - 0.1) * 10) / 10);
+      applyFontScale();
+      saveA11ySettings();
+    });
+    a11yFontIncrease.addEventListener('click', () => {
+      a11yFontScale = Math.min(1.4, Math.round((a11yFontScale + 0.1) * 10) / 10);
+      applyFontScale();
+      saveA11ySettings();
+    });
+
+    a11yContrastToggle.addEventListener('click', () => {
+      applyContrast(!a11yContrastEnabled);
+      saveA11ySettings();
+    });
+
+    a11yMotionToggle.addEventListener('click', () => {
+      applyMotion(!a11yMotionDisabled);
+      saveA11ySettings();
+    });
+
+    a11yResetBtn.addEventListener('click', () => {
+      a11yFontScale = 1;
+      applyFontScale();
+      applyContrast(false);
+      applyMotion(false);
+      saveA11ySettings();
+    });
+
+    loadA11ySettings();
 
     // ===== قاموس الترجمة (عربي / إنجليزي) =====
     const translations = {
@@ -1383,7 +1760,15 @@
       linkComplaint: { ar: "تقديم شكوى", en: "Submit a Complaint" },
       linkPrivacy: { ar: "سياسة الخصوصية", en: "Privacy Policy" },
       linkTerms: { ar: "الشروط والأحكام", en: "Terms & Conditions" },
-      linkAccessibility: { ar: "إمكانية الوصول", en: "Accessibility" },
+      a11yToggleAria: { ar: "إعدادات إمكانية الوصول", en: "Accessibility settings" },
+      a11yTitle: { ar: "إعدادات إمكانية الوصول", en: "Accessibility settings" },
+      a11yCloseAria: { ar: "إغلاق", en: "Close" },
+      a11yFontSize: { ar: "حجم الخط", en: "Font size" },
+      a11yFontDecreaseAria: { ar: "تصغير حجم الخط", en: "Decrease font size" },
+      a11yFontIncreaseAria: { ar: "تكبير حجم الخط", en: "Increase font size" },
+      a11yHighContrast: { ar: "وضع التباين العالي", en: "High contrast mode" },
+      a11yReduceMotion: { ar: "تعطيل الحركات والانتقالات", en: "Disable animations & transitions" },
+      a11yReset: { ar: "إعادة الضبط الافتراضي", en: "Reset to default" },
       statusPortal: { ar: "بوابة الخدمات", en: "Services portal" },
       statusAvailable: { ar: "متاحة", en: "available" },
       statusPayment: { ar: "الدفع الإلكتروني", en: "Online payment" },
