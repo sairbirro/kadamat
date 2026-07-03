@@ -33,6 +33,7 @@
     --glass-bg-strong:rgba(255,255,255,0.26);
     --glass-border:rgba(255,255,255,0.32);
     --shadow-deep: 0 20px 45px rgba(3,14,28,0.45);
+    --olive-bg: #283A18; /* لون زيتي غني للوضع الداكن */
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -700,6 +701,7 @@
     --glass-bg-strong:rgba(255,255,255,0.65);
     --glass-border:rgba(15,48,85,0.16);
     --shadow-deep: 0 16px 34px rgba(15,48,85,0.12);
+    --olive-bg: #E1EAD2; /* لون زيتي هادئ وفاتح للوضع الفاتح */
   }
   html[data-theme="light"] header.app-header,
   html[data-theme="light"] .hero,
@@ -811,7 +813,7 @@
     width:min(400px, 100%);
     max-height:86vh;
     overflow-y:auto;
-    background:var(--navy-800);
+    background:var(--olive-bg); /* تم تعديل الخلفية إلى زيتي */
     border:1px solid var(--glass-border);
     border-radius:18px;
     box-shadow:var(--shadow-deep);
@@ -964,6 +966,7 @@
     --navy-800:#FFFFFF;
     --navy-700:#FFFFFF;
     --shadow-deep:none;
+    --olive-bg:#FFFFFF;
   }
   html.a11y-contrast body{
     background:#FFFFFF !important;
@@ -1388,7 +1391,7 @@
             <div class="brand-emblem">خ</div>
             <div>
               <h4 data-i18n="brandName">منصة خدماتي</h4>
-              <span data-i18n="brandTagline">البوابة الموحدة للخدمات الحكومية الرقمية السورية</span>
+              <span data-i18n="brandTagline">البوابة الموحدة للخدمات الحكومية الرقمية</span>
             </div>
           </div>
           <div class="system-status">
@@ -1426,46 +1429,46 @@
       </div>
 
       <div class="footer-bottom">
-        <span data-i18n="copyright">جميع الحقوق محفوظة © 2026 منصة خدماتي — تم إعدادها بكل شغف و حب للوطن من قبل Sair Birro</span>
+        <span data-i18n="copyright">جميع الحقوق محفوظة © 2026 منصة خدماتي — تم إعدادها بكل شغف و حب للوطن</span>
       </div>
     </footer>
 
-    <!-- ===== نافذة إعدادات إمكانية الوصول ===== -->
-    <div class="a11y-modal" id="a11y-modal" role="dialog" aria-modal="true" aria-labelledby="a11y-modal-title" aria-hidden="true">
-      <div class="a11y-modal-backdrop" id="a11y-modal-backdrop"></div>
-      <div class="a11y-modal-panel">
-        <div class="a11y-modal-header">
-          <h3 id="a11y-modal-title" data-i18n="a11yTitle">إعدادات إمكانية الوصول</h3>
-          <button type="button" class="a11y-modal-close" id="a11y-modal-close" data-i18n-aria="a11yCloseAria" aria-label="إغلاق">×</button>
-        </div>
+  </div>
 
-        <div class="a11y-option">
-          <span class="a11y-option-label" data-i18n="a11yFontSize">حجم الخط</span>
-          <div class="a11y-stepper">
-            <button type="button" id="a11y-font-decrease" data-i18n-aria="a11yFontDecreaseAria" aria-label="تصغير حجم الخط">−</button>
-            <span id="a11y-font-value">100%</span>
-            <button type="button" id="a11y-font-increase" data-i18n-aria="a11yFontIncreaseAria" aria-label="تكبير حجم الخط">+</button>
-          </div>
-        </div>
-
-        <div class="a11y-option">
-          <span class="a11y-option-label" data-i18n="a11yHighContrast">وضع التباين العالي</span>
-          <button type="button" class="a11y-switch" id="a11y-contrast-toggle" role="switch" aria-checked="false" data-i18n-aria="a11yHighContrast" aria-label="وضع التباين العالي">
-            <span class="a11y-switch-knob"></span>
-          </button>
-        </div>
-
-        <div class="a11y-option">
-          <span class="a11y-option-label" data-i18n="a11yReduceMotion">تعطيل الحركات والانتقالات</span>
-          <button type="button" class="a11y-switch" id="a11y-motion-toggle" role="switch" aria-checked="false" data-i18n-aria="a11yReduceMotion" aria-label="تعطيل الحركات والانتقالات">
-            <span class="a11y-switch-knob"></span>
-          </button>
-        </div>
-
-        <button type="button" class="a11y-reset" id="a11y-reset-btn" data-i18n="a11yReset">إعادة الضبط الافتراضي</button>
+  <!-- ===== نافذة إعدادات إمكانية الوصول (تم نقلها هنا خارج حاوية #app لتثبيت التموضع في وسط الشاشة) ===== -->
+  <div class="a11y-modal" id="a11y-modal" role="dialog" aria-modal="true" aria-labelledby="a11y-modal-title" aria-hidden="true">
+    <div class="a11y-modal-backdrop" id="a11y-modal-backdrop"></div>
+    <div class="a11y-modal-panel">
+      <div class="a11y-modal-header">
+        <h3 id="a11y-modal-title" data-i18n="a11yTitle">إعدادات إمكانية الوصول</h3>
+        <button type="button" class="a11y-modal-close" id="a11y-modal-close" data-i18n-aria="a11yCloseAria" aria-label="إغلاق">×</button>
       </div>
-    </div>
 
+      <div class="a11y-option">
+        <span class="a11y-option-label" data-i18n="a11yFontSize">حجم الخط</span>
+        <div class="a11y-stepper">
+          <button type="button" id="a11y-font-decrease" data-i18n-aria="a11yFontDecreaseAria" aria-label="تصغير حجم الخط">−</button>
+          <span id="a11y-font-value">100%</span>
+          <button type="button" id="a11y-font-increase" data-i18n-aria="a11yFontIncreaseAria" aria-label="تكبير حجم الخط">+</button>
+        </div>
+      </div>
+
+      <div class="a11y-option">
+        <span class="a11y-option-label" data-i18n="a11yHighContrast">وضع التباين العالي</span>
+        <button type="button" class="a11y-switch" id="a11y-contrast-toggle" role="switch" aria-checked="false" data-i18n-aria="a11yHighContrast" aria-label="وضع التباين العالي">
+          <span class="a11y-switch-knob"></span>
+        </button>
+      </div>
+
+      <div class="a11y-option">
+        <span class="a11y-option-label" data-i18n="a11yReduceMotion">تعطيل الحركات والانتقالات</span>
+        <button type="button" class="a11y-switch" id="a11y-motion-toggle" role="switch" aria-checked="false" data-i18n-aria="a11yReduceMotion" aria-label="تعطيل الحركات والانتقالات">
+          <span class="a11y-switch-knob"></span>
+        </button>
+      </div>
+
+      <button type="button" class="a11y-reset" id="a11y-reset-btn" data-i18n="a11yReset">إعادة الضبط الافتراضي</button>
+    </div>
   </div>
 
   <script>
