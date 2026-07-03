@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -343,8 +344,8 @@
   }
   .cards-grid{
     display:grid;
-    /* التعديل هنا: جعل الحد الأدنى للبطاقة 300px واستخدام auto-fit لملء السطر وتوسيط العناصر */
-    grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    /* استخدام auto-fill بدلاً من auto-fit لمنع تمدد العناصر عند وجود عنصر أو عنصرين فقط */
+    grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
     gap:28px;
     justify-content:center;
   }
@@ -368,6 +369,10 @@
     -webkit-backdrop-filter:blur(22px) saturate(160%);
     box-shadow:var(--shadow-deep);
     transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+    /* تحديد حد أقصى لعرض البطاقة لمنعها من التمدد بشكل مفرط على الشاشات الكبيرة */
+    width: 100%;
+    max-width: 360px;
+    justify-self: center;
   }
   .service-card:hover{
     transform:translateY(-6px);
@@ -1642,7 +1647,7 @@
 
     let a11yFontScale = 1;
     let a11yContrastEnabled = false;
-    // a11yMotionDisabled معرّف مسبقًا أعلى الملف ويُستخدم هنا أيضًا
+    // a11yMotionDisabled معرّف مسبقًا أعلى الملف ويُسخدم هنا أيضًا
 
     function applyFontScale(){
       const percent = Math.round(a11yFontScale * 100);
