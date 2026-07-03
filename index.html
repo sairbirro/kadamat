@@ -150,6 +150,9 @@
     transform:translateY(8px);
     transition:opacity .6s ease, transform .6s ease;
     position:relative;
+    max-width: 1360px; /* تحديد العرض لتفادي تمدد الصفحة المفرط */
+    margin: 0 auto;    /* لتوسيط الحاوية في منتصف الشاشة */
+    width: 100%;
   }
   #app.visible{
     opacity:1;
@@ -1428,7 +1431,7 @@
       </div>
 
       <div class="footer-bottom">
-        <span data-i18n="copyright">جميع الحقوق محفوظة © 2026 منصة خدماتي — تم إعدادها بكل شغف و حب للوطن</span>
+        <span data-i18n="copyright">جميع الحقوق محفوظة © 2026 منصة خدماتي — بوابة تجريبية للأغراض التصميمية</span>
       </div>
     </footer>
 
