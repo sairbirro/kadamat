@@ -1469,6 +1469,12 @@
       }, 450);
     });
 
+    // إخفاء شاشة الانتقال دائمًا عند ظهور الصفحة، بما في ذلك العودة عبر زر الرجوع
+    // (حيث يستعيد المتصفح أحيانًا الصفحة من bfcache بنفس حالتها القديمة)
+    window.addEventListener('pageshow', () => {
+      pageTransition.classList.remove('show');
+    });
+
     // ===== منطق التبويبات =====
     const tabButtons = document.querySelectorAll('.tab-btn');
     const panels = {
