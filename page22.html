@@ -94,7 +94,14 @@ transition:opacity .7s ease, visibility .7s ease;
 .mini-spinner{ width:44px;height:44px; border-radius:50%; border:3px solid rgba(230,199,103,0.2); border-top-color:var(--gold-500); animation:spin .8s linear infinite; }
 @keyframes spin{ to{ transform:rotate(360deg); } }
 
-#app{ opacity:0; transform:translateY(8px); transition:opacity .6s ease, transform .6s ease; position:relative; }
+/* حاوية التطبيق مع إزاحة علوية للمنع التداخل مع البانر الثابت */
+#app{ 
+opacity:0; 
+transform:translateY(8px); 
+transition:opacity .6s ease, transform .6s ease; 
+position:relative; 
+padding-top: 86px; /* توفير مساحة علوية لمنع تداخل المحتوى مع البانر */
+}
 #app.visible{ opacity:1; transform:translateY(0); }
 
 .watermark-seal{ position:absolute; top:60px; left:clamp(-160px, -6vw, -60px); width:min(640px, 60vw); height:min(640px, 60vw); z-index:0; pointer-events:none; opacity:0.06; will-change:transform; }
@@ -103,23 +110,24 @@ transition:opacity .7s ease, visibility .7s ease;
 .watermark-seal .ring-inner{ fill:none; stroke:var(--gold-300); stroke-width:0.6; stroke-dasharray:4 6; }
 .watermark-seal .seal-glyph{ font-family:'Cairo', sans-serif; font-weight:800; font-size:150px; fill:var(--gold-300); text-anchor:middle; dominant-baseline:central; }
 
-/* ===== الترويسة العائمة (مطابقة للصفحة الرئيسية بالكامل) ===== */
+/* ===== الترويسة العائمة المثبتة حقيقياً ===== */
 header.app-header{
 display:flex;
 align-items:center;
 justify-content:space-between;
 gap:12px;
 padding:10px clamp(14px, 4vw, 40px);
-margin:14px clamp(14px, 4vw, 40px) 0;
 border-radius:16px;
 background:var(--glass-bg);
 border:1px solid var(--glass-border);
 backdrop-filter:blur(18px) saturate(140%);
 -webkit-backdrop-filter:blur(18px) saturate(140%);
 box-shadow:var(--shadow-deep);
-position:sticky;
+position:fixed; /* التثبيت الدائم أعلى الشاشة */
 top:14px;
-z-index:30;
+left:clamp(14px, 4vw, 40px);
+right:clamp(14px, 4vw, 40px);
+z-index:100; /* أعلى من شاشة التحميل وبقية العناصر */
 }
 .brand{
 display:flex;
@@ -406,6 +414,9 @@ color:var(--text-muted);
 @media (max-width:520px){ 
   .footer-top{ grid-template-columns:1fr; } 
   header.app-header{ flex-wrap:wrap; } 
+  #app {
+    padding-top: 110px; /* مساحة تمنع التداخل في حالة التفاف البانر على شاشات الجوال الضيقة */
+  }
 }
 
 @media (prefers-reduced-motion: reduce){ *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; } }
@@ -441,17 +452,7 @@ html[dir="ltr"] .watermark-seal{ left:auto; right:clamp(-160px, -6vw, -60px); }
 <p data-i18n="transitionText">جارٍ الانتقال...</p>
 </div>
 
-<div id="app">
-
-<div class="watermark-seal" id="watermark-seal" aria-hidden="true">
-<svg viewBox="0 0 400 400">
-<circle class="ring-outer" cx="200" cy="200" r="188"></circle>
-<circle class="ring-inner" cx="200" cy="200" r="162"></circle>
-<circle class="ring-outer" cx="200" cy="200" r="120"></circle>
-<text class="seal-glyph" x="200" y="206">خ</text>
-</svg>
-</div>
-
+<!-- البانر العلوي عائم ومثبت حقيقياً وخارج الحاوية ليعمل بمرونة مطلقة -->
 <header class="app-header">
 <div class="brand">
 <div class="brand-emblem">خ</div>
@@ -472,6 +473,8 @@ html[dir="ltr"] .watermark-seal{ left:auto; right:clamp(-160px, -6vw, -60px); }
 <button type="button" id="lang-toggle" class="footer-lang" aria-label="Switch to English">English</button>
 </div>
 </header>
+
+<div id="app">
 
 <nav class="breadcrumb" aria-label="مسار التنقل">
 <a href="index.html" data-i18n="crumbHome">الرئيسية</a>
