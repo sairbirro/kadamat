@@ -39,7 +39,7 @@ document.documentElement.setAttribute('data-theme', saved);
 html{
 min-height:100%;
 overscroll-behavior-y:none; /* منع الارتداد المرن وظهور المستطيل الأبيض */
-overflow-x:hidden; /* منع تمدد الشاشة أفقياً كلياً */
+/* تم نقل overflow-x:hidden إلى body فقط لتفادي تعطيل position:fixed على بعض المتصفحات (خصوصًا iOS Safari) عند تطبيقه على html وbody معًا */
 }
 
 body{
