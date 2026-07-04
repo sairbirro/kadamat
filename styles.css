@@ -27,18 +27,23 @@
     font-size: 16px; /* رفع الحجم الافتراضي للخط لراحة العين */
   }
 
-  /* ===== الخلفية الثابتة موضوعة مباشرة على body مع background-attachment:fixed
-     (نفس طريقة صفحة سياسة الخصوصية التي لا تظهر فيها مشكلة المستطيل عند التمرير على الموبايل) ===== */
-  /* ===== الخلفية الثابتة موضوعة على html و body معًا لمنع ظهور مساحة كحلية فارغة
-     أسفل الصفحة عند قصر المحتوى عن ارتفاع الشاشة (مثل وضع "عرض سطح المكتب" بالموبايل) ===== */
+  /* ===== الخلفية الثابتة موضوعة على عنصر #page-bg منفصل بـ position:fixed
+     بدل background-attachment:fixed على body/html، لتجنب ومضة المستطيل الأبيض
+     التي تظهر على متصفحات الموبايل أثناء تأثير الارتداد (bounce) بالتمرير السريع ===== */
   html, body{
+    background-color:#0A2136;
+  }
+
+  #page-bg{
+    position:fixed;
+    inset:0;
+    z-index:-1;
     background:
       linear-gradient(rgba(6,18,30,0.5), rgba(6,18,30,0.5)),
       url('bg-dark.jpg');
     background-size: cover, cover;
     background-position: center, center;
     background-repeat: no-repeat, no-repeat;
-    background-attachment: fixed, fixed;
   }
 
   header.app-header, .hero, .tabs-bar, footer.app-footer{
@@ -48,15 +53,12 @@
   html[data-theme="light"]{
     background-color:#F3F6F9;
   }
-  html[data-theme="light"] body, html[data-theme="light"]{
+  html[data-theme="light"] #page-bg{
     background-image:
       linear-gradient(rgba(255,255,255,0.55), rgba(255,255,255,0.55)),
       url('bg-light.jpg');
     background-size: cover, cover;
   }
-
-  /* #page-bg غير مستخدم الآن بعد نقل الخلفية إلى body، تُرك بلا تنسيق عمدًا */
-  #page-bg{ display:none; }
 
   /* ===== شاشة التحميل ===== */
   #loading-screen{
