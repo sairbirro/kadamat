@@ -3,16 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>عنوان الصفحة — منصة خدماتي</title>
+<title>منح رخص حفر الآبار — منصة خدماتي</title>
 <script>
-  // تطبيق الثيم المحفوظ فورًا قبل رسم الصفحة لتفادي وميض اللون الخاطئ
   (function(){
     try {
       var saved = localStorage.getItem('khadamati-theme');
       if (saved === 'light' || saved === 'dark') {
         document.documentElement.setAttribute('data-theme', saved);
       }
-    } catch (err) { /* تجاهل بأمان إذا لم يكن التخزين متاحًا */ }
+    } catch (err) {}
   })();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,8 +46,6 @@ html,body{
   font-size:16px;
 }
 
-/* ===== الخلفية الثابتة على body مباشرة مع background-attachment:fixed
-   (الطريقة السليمة التي لا تُظهر مشكلة المستطيل عند التمرير على الموبايل) ===== */
 body{
   background:
     linear-gradient(rgba(6,18,30,0.5), rgba(6,18,30,0.5)),
@@ -84,723 +81,118 @@ html[data-theme="light"] body{
   background-size: cover, cover;
 }
 
-header.app-header, footer.app-footer{
-  text-shadow:0 1px 4px rgba(0,0,0,0.4);
-}
-html[data-theme="light"] header.app-header,
-html[data-theme="light"] footer.app-footer{
-  text-shadow:0 1px 3px rgba(255,255,255,0.7);
-  border-color:rgba(15,48,85,0.08);
-}
+/* الترويسة والفوتر كما هي */
+header.app-header, footer.app-footer{ text-shadow:0 1px 4px rgba(0,0,0,0.4); }
+html[data-theme="light"] header.app-header, html[data-theme="light"] footer.app-footer{ text-shadow:0 1px 3px rgba(255,255,255,0.7); border-color:rgba(15,48,85,0.08); }
 
-/* ===== الترويسة ===== */
 header.app-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:12px clamp(16px, 4vw, 40px);
-  margin:14px clamp(14px, 4vw, 40px) 0;
-  border-radius:16px;
-  background:var(--glass-bg);
-  border:1px solid var(--glass-border);
-  backdrop-filter:blur(18px) saturate(140%);
-  -webkit-backdrop-filter:blur(18px) saturate(140%);
-  box-shadow:var(--shadow-deep);
-  position:sticky;
-  top:14px;
-  z-index:30;
-  transform:translateZ(0);
-  -webkit-transform:translateZ(0);
-  will-change:transform;
-  isolation:isolate;
-}
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-.brand-emblem{
-  width:42px;height:42px;
-  border-radius:50%;
-  overflow:hidden;
-  display:flex;align-items:center;justify-content:center;
-  background:rgba(201,162,39,0.08);
-  box-shadow:0 0 0 1px rgba(201,162,39,0.35);
-  flex-shrink:0;
-}
-.brand-emblem img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-.brand-text h1{
-  font-family:'Cairo', sans-serif;
-  font-size:22px;
-  font-weight:800;
-  color:var(--text-light);
-  letter-spacing:.3px;
-}
-.brand-text span{
-  display:block;
-  font-size:14px;
-  font-weight:500;
-  color:var(--text-muted);
-  margin-top:2px;
-}
-.header-actions{
-  display:flex;
-  align-items:center;
-  gap:10px;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:12px clamp(16px, 4vw, 40px); margin:14px clamp(14px, 4vw, 40px) 0;
+  border-radius:16px; background:var(--glass-bg); border:1px solid var(--glass-border);
+  backdrop-filter:blur(18px) saturate(140%); position:sticky; top:14px; z-index:30;
 }
 
-/* زر العودة إلى الصفحة الرئيسية */
-.home-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  font-family:'Tajawal', sans-serif;
-  font-size:14.375px;
-  font-weight:700;
-  color:var(--gold-300);
-  background:var(--glass-bg-strong);
-  border:1px solid var(--glass-border);
-  padding:7px 14px;
-  border-radius:999px;
-  cursor:pointer;
-  text-decoration:none;
-  backdrop-filter:blur(10px);
-  transition:border-color .25s ease, background .25s ease;
-  flex-shrink:0;
-}
-.home-btn:hover{ border-color:var(--gold-500); }
-.home-btn:focus-visible{
-  outline:2px solid var(--gold-500);
-  outline-offset:3px;
-}
-.home-btn svg{ width:16px;height:16px; }
+/* المحتوى وتعديلات النص */
+.content-main{ flex:1; padding:40px clamp(16px, 5vw, 56px) 60px; max-width:860px; margin:0 auto; width:100%; }
 
-.theme-toggle{
-  width:32px;height:32px;
-  border-radius:50%;
-  border:1px solid var(--glass-border);
-  background:var(--glass-bg-strong);
-  color:var(--gold-300);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;
-  backdrop-filter:blur(10px);
-  transition:border-color .25s ease, background .25s ease;
-  flex-shrink:0;
-}
-.theme-toggle svg{ width:15px;height:15px; }
-.theme-toggle:hover{ border-color:var(--gold-500); }
-.theme-toggle:focus-visible{
-  outline:2px solid var(--gold-500);
-  outline-offset:3px;
-}
-.theme-toggle .icon-moon{ display:none; }
-html[data-theme="light"] .theme-toggle .icon-sun{ display:none; }
-html[data-theme="light"] .theme-toggle .icon-moon{ display:block; }
+.content-title{ font-family:'Cairo', sans-serif; font-size:clamp(26px, 4vw, 38px); font-weight:800; color:var(--gold-300); text-align:center; margin-bottom:36px; }
 
-.footer-lang{
-  font-family:'Tajawal', sans-serif;
-  font-size:14.375px;
-  font-weight:700;
-  color:var(--gold-300);
-  background:var(--glass-bg-strong);
-  border:1px solid var(--glass-border);
-  padding:7px 13px;
-  border-radius:999px;
-  cursor:pointer;
-  backdrop-filter:blur(10px);
-  transition:border-color .25s ease, background .25s ease;
-  flex-shrink:0;
-}
-.footer-lang:hover{ border-color:var(--gold-500); }
-
-/* =========================================================
-   ===== محتوى الصفحة (فارغ / قابل للتعديل لاحقًا) =====
-   العناصر أدناه هي "هيكل" فقط بنفس الخطوط والأوزان والألوان
-   المستخدمة في باقي صفحات المنصة، بحيث يسهل تعبئتها بأي
-   موضوع مستقبلًا دون الحاجة لإعادة بناء الستايل من جديد.
-   ========================================================= */
-.content-main{
-  flex:1;
-  padding:40px clamp(16px, 5vw, 56px) 60px;
-  max-width:860px;
-  margin:0 auto;
-  width:100%;
-}
-
-/* --- 1) مكان الصورة الرئيسية ---
-   استبدل src="" بمسار الصورة عند التعديل لاحقًا. */
-.content-image{
-  width:100%;
-  aspect-ratio:16/9;
-  border-radius:20px;
-  overflow:hidden;
-  background:var(--glass-bg);
-  border:1px solid var(--glass-border);
-  backdrop-filter:blur(18px) saturate(140%);
-  -webkit-backdrop-filter:blur(18px) saturate(140%);
-  box-shadow:var(--shadow-deep);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin-bottom:32px;
-}
-.content-image img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-/* شكل بديل يظهر فقط إذا لم يتم تحديد مصدر للصورة بعد */
-.content-image .image-placeholder{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:10px;
-  color:var(--text-muted);
-  font-size:14.5px;
-  font-weight:500;
-}
-.content-image .image-placeholder svg{
-  width:44px;height:44px;
-  color:var(--gold-300);
-  opacity:.8;
-}
-
-/* --- 2) مكان العنوان العريض ---
-   يستخدم خط Cairo بوزن 800 ولون الذهبي، نفس أسلوب عناوين
-   الصفحات الأخرى (page-head h2). */
-.content-title{
-  font-family:'Cairo', sans-serif;
-  font-size:clamp(26px, 4vw, 38px);
-  font-weight:800;
-  color:var(--gold-300);
-  text-align:center;
-  margin-bottom:14px;
-  line-height:1.35;
-}
-
-/* عنوان فرعي اختياري تحت العنوان الرئيسي (نفس أسلوب page-head p) */
-.content-subtitle{
-  font-size:15.5px;
-  font-weight:500;
-  color:var(--text-muted);
-  text-align:center;
-  max-width:600px;
-  margin:0 auto 36px;
-}
-
-/* --- 3) مكان النص العام ---
-   بطاقة زجاجية بنفس أسلوب البطاقات الأخرى في المنصة، تحتوي
-   على نص بخط Tajawal بوزن 500 ولون متوافق مع النصوص العامة. */
 .content-card{
-  border-radius:20px;
-  background:var(--glass-bg);
-  border:1px solid var(--glass-border);
-  backdrop-filter:blur(18px) saturate(140%);
-  -webkit-backdrop-filter:blur(18px) saturate(140%);
-  box-shadow:var(--shadow-deep);
-  padding:clamp(22px, 4vw, 40px);
+  border-radius:20px; background:var(--glass-bg); border:1px solid var(--glass-border);
+  backdrop-filter:blur(18px); padding:clamp(22px, 4vw, 40px); color:var(--text-light);
 }
-.content-card p{
-  font-size:15.5px;
-  font-weight:500;
-  line-height:1.9;
-  color:var(--text-muted);
+.content-card h3{ font-family:'Cairo', sans-serif; font-size:19px; color:var(--gold-300); margin:25px 0 12px; }
+.content-card p, .content-card li{ font-size:15.5px; line-height:1.8; color:var(--text-muted); }
+.content-card ul{ padding-right:25px; margin-bottom:10px; }
+.content-card li{ margin-bottom:8px; }
+
+.intro-text{
+  background:var(--glass-bg-strong); padding:15px; border-radius:12px;
+  border-right:4px solid var(--gold-500); color:var(--text-light); font-weight:700;
 }
-.content-card p + p{
-  margin-top:16px;
-}
-/* عنوان فرعي داخل البطاقة إن احتجت لتقسيم النص لاحقًا (نفس أسلوب footer-col h5) */
-.content-card h3{
-  font-family:'Cairo', sans-serif;
-  font-size:18px;
-  font-weight:700;
-  color:var(--gold-300);
-  margin-bottom:12px;
-}
-.content-card h3 + p,
-.content-card * + h3{
-  margin-top:20px;
+.conclusion-box{
+  margin-top:30px; padding:20px; background:rgba(201,162,39,0.1);
+  border:1px solid var(--glass-border); border-radius:16px;
 }
 
-@media (max-width:520px){
-  header.app-header{ flex-wrap:wrap; }
-}
-
-/* ===== الفوتر ===== */
-footer.app-footer{
-  border-top:1px solid rgba(255,255,255,0.08);
-  background:transparent;
-  padding:44px clamp(16px, 5vw, 56px) 0;
-}
-.footer-top{
-  display:grid;
-  grid-template-columns:1.6fr 1fr 1fr 1.2fr;
-  gap:32px;
-  padding-bottom:34px;
-}
-.footer-col h5{
-  font-family:'Cairo', sans-serif;
-  font-size:17px;
-  font-weight:700;
-  color:var(--gold-300);
-  letter-spacing:.3px;
-  margin-bottom:14px;
-}
-.footer-emblem{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:16px;
-}
-.footer-emblem h4{
-  font-family:'Cairo', sans-serif;
-  font-size:20px;
-  font-weight:800;
-  color:var(--text-light);
-}
-.footer-emblem span{
-  display:block;
-  font-size:15px;
-  font-weight:500;
-  color:var(--text-muted);
-  margin-top:2px;
-}
-.system-status{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  font-size:15px;
-  font-weight:500;
-  color:var(--text-muted);
-  background:transparent;
-  border:1px solid var(--glass-border);
-  padding:7px 13px;
-  border-radius:999px;
-  width:fit-content;
-}
-.system-status .dot{
-  width:7px;height:7px;border-radius:50%;
-  background:#3FBF8F;
-  box-shadow:0 0 8px #3FBF8F;
-}
-.footer-col ul{
-  list-style:none;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-.footer-col ul li a{
-  color:var(--text-muted);
-  text-decoration:none;
-  font-size:15px;
-  font-weight:500;
-  transition:color .25s ease;
-}
-.footer-col ul li a:hover,
-.footer-col ul li a:focus-visible{
-  color:var(--gold-300);
-}
-.footer-col ul li a:focus-visible{
-  outline:2px solid var(--gold-500);
-  outline-offset:3px;
-  border-radius:3px;
-}
-.status-list li{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-size:14.5px;
-  font-weight:500;
-  color:var(--text-muted);
-}
-.status-list li b{
-  color:var(--text-light);
-  font-weight:700;
-}
-.status-pill{
-  width:8px;height:8px;
-  border-radius:50%;
-  flex-shrink:0;
-}
-.status-pill.ok{ background:#3FBF8F; box-shadow:0 0 6px #3FBF8F; }
-.status-pill.warn{ background:var(--gold-500); box-shadow:0 0 6px var(--gold-500); }
-
-.footer-bottom{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  flex-wrap:wrap;
-  padding:18px 0 22px;
-  border-top:1px solid rgba(255,255,255,0.08);
-  font-size:14px;
-  font-weight:500;
-  color:var(--text-muted);
-}
-
-@media (max-width:820px){
-  .footer-top{ grid-template-columns:1fr 1fr; }
-}
-@media (max-width:520px){
-  .footer-top{ grid-template-columns:1fr; }
-}
-
-html[dir="ltr"] body{ font-family:'Tajawal','Inter',sans-serif; }
-
-@media (prefers-reduced-motion: reduce){
-  *{ animation-duration:0.001s !important; transition-duration:0.001s !important; }
-}
+/* الفوتر كما هو */
+footer.app-footer{ border-top:1px solid rgba(255,255,255,0.08); padding:44px clamp(16px, 5vw, 56px) 0; }
+.footer-top{ display:grid; grid-template-columns:1.6fr 1fr 1fr 1.2fr; gap:32px; padding-bottom:34px; }
+.footer-col h5{ font-family:'Cairo', sans-serif; font-size:17px; color:var(--gold-300); margin-bottom:14px; }
 </style>
 </head>
 <body>
 
   <header class="app-header">
     <div class="brand">
-      <div class="brand-emblem"><img src="logo-emblem.png" alt="شعار منصة خدماتي"></div>
-      <div class="brand-text">
-        <h1 data-i18n="brandName">منصة خدماتي</h1>
-        <span data-i18n="brandTagline">البوابة الموحدة للخدمات الحكومية الرقمية</span>
-      </div>
+      <div class="brand-text"><h1>منصة خدماتي</h1></div>
     </div>
     <div class="header-actions">
-      <a class="home-btn" href="index.html" data-i18n="backHomeText" aria-label="العودة إلى الصفحة الرئيسية" data-i18n-aria="backHomeAria">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"></path><path d="M5.5 10v9a1 1 0 0 0 1 1H9.5a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-9"></path></svg>
-        الرئيسية
-      </a>
-      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="التبديل إلى الوضع الفاتح" data-i18n-aria="themeToggleAria">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path></svg>
-      </button>
-      <button type="button" id="lang-toggle" class="footer-lang" aria-label="Switch to English">English</button>
+      <button id="theme-toggle" class="theme-toggle" type="button">تبديل الثيم</button>
+      <button type="button" id="lang-toggle" class="footer-lang">English</button>
     </div>
   </header>
 
   <main class="content-main">
-
-    <!-- ===== 1) الصورة الرئيسية =====
-         لإضافة صورة: أضف مسارها داخل src="" أدناه، واحذف
-         عنصر .image-placeholder إن رغبت. -->
-
-    <!-- ===== 2) العنوان العريض والعنوان الفرعي ===== -->
     <h2 class="content-title">منح رخص حفر واستثمار الآبار</h2>
-    <p class="content-subtitle"></p>
 
-    <!-- ===== 3) النص العام ===== -->
     <div class="content-card">
-      <p><style>
-  /* تعريف المتغيرات الافتراضية (الثيم النهاري) */
-  .license-container {
-    --bg-color-transparent: transparent; /* خلفية شفافة */
-    --text-color: #333333;               /* نص أسود */
-    --title-color: #2c3e50;              /* عنوان رئيسي غامق */
-    --section-title-color: #2980b9;      /* عناوين فرعية زرقاء */
-    --accent-color: #3498db;             /* لون مميز (الأزرق) */
-    --highlight-bg: #e8f4f8;             /* خلفية فاتحة للتمييز (اختياري) */
-    --conclusion-border: #d6dbdf;         /* لون إطار الخاتمة */
-  }
+      <p class="intro-text">وفقاً للقرارات النافذة وآخرها قرار رئاسة مجلس الوزراء رقم /8/ تاريخ 26/1/2023، يجب أن تكون المنطقة مسموح الحفر فيها للأغراض الزراعية.</p>
 
-  /* تعريف المتغيرات عند تفعيل الثيم الليلي (Media Query) */
-  @media (prefers-color-scheme: dark) {
-    .license-container {
-      --bg-color-transparent: transparent; /* تبقى شفافة */
-      --text-color: #f1f1f1;               /* نص أبيض */
-      --title-color: #ecf0f1;              /* عنوان رئيسي فاتح */
-      --section-title-color: #3498db;      /* عناوين فرعية زرقاء أفتح */
-      --accent-color: #5dade2;             /* لون مميز أفتح */
-      --highlight-bg: #1c3d5a;             /* خلفية داكنة للتمييز (تناسب النص الفاتح) */
-      --conclusion-border: #4a5a6a;        /* لون إطار الخاتمة الداكن */
-    }
-  }
+      <h3>1. الوثائق العامة المطلوبة</h3>
+      <ul>
+        <li>طلب يقدم من صاحب العلاقة مرفقاً به صورة عن الهوية الشخصية.</li>
+        <li>وثيقة قيد عقاري وبيان مساحي ومخطط مساحي للعقار، تبين ملكية صاحب العقار لأغلبية سهمية فيه.</li>
+        <li>استمارة رخصة الحفر متضمنة البيانات اللازمة (المقنن المائي، المساحة، العمق).</li>
+        <li>محضر كشف فني صادر عن مديرية الموارد المائية ومصدق أصولاً.</li>
+        <li>تعهد خطي مصدق من الكاتب بالعدل بالالتزام بشروط الترخيص.</li>
+        <li>تفويض من أغلبية المالكين في حال عدم تحقيق الحصة السهمية المطلوبة.</li>
+        <li>كتاب من البلدية يبين وقوع العقار خارج المخطط التنظيمي.</li>
+      </ul>
 
-  /* تطبيق التنسيقات باستخدام المتغيرات */
-  .license-container {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.8;
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: var(--bg-color-transparent); /* استخدام الخلفية الشفافة */
-    color: var(--text-color);                     /* استخدام لون النص المتغير */
-    border-radius: 8px;
-    direction: rtl; /* ضمان الاتجاه من اليمين لليسار */
-  }
+      <h3>2. للأغراض الزراعية (إضافات)</h3>
+      <ul>
+        <li>كتاب المؤسسة العامة لمياه الشرب يتضمن المسافة بين موقع الحفر وأقرب بئر (يجب ألا تقل عن 1000م).</li>
+      </ul>
 
-  .main-title {
-    color: var(--title-color);
-    border-bottom: 2px solid var(--accent-color);
-    padding-bottom: 15px;
-    margin-bottom: 25px;
-  }
+      <h3>3. للأغراض غير الزراعية (صناعية، تجارية، سياحية)</h3>
+      <ul>
+        <li>كتاب مؤسسة المياه بشأن إمكانية التخديم من الشبكة العامة.</li>
+        <li>وثيقة احتياج مائي من مكتب هندسي متخصص ومصدقة من الجهة المختصة.</li>
+        <li>قرار ترخيص المنشأة وكتاب توسط من الجهة مانحة الترخيص.</li>
+        <li>محضر كشف فني يوضح الاحتياج المائي دون ذكر المساحة.</li>
+      </ul>
 
-  .intro-text {
-    font-weight: bold;
-    background-color: var(--highlight-bg);
-    padding: 15px;
-    border-right: 5px solid var(--accent-color);
-    border-radius: 4px;
-    margin-bottom: 25px;
-  }
+      <h3>4. لأغراض الشرب والاستخدامات المنزلية (إضافات)</h3>
+      <ul>
+        <li>كتاب عدم إمكانية التخديم من الشبكة العامة.</li>
+        <li>مخطط كركوكي يثبت وجود 10 منازل غير مخدمة وتقع خارج المخطط التنظيمي.</li>
+        <li>طلب تشكيل جمعية مستخدمي المياه، وفي حال الجمعيات السكنية يرفق قرار ترخيص الجمعية.</li>
+      </ul>
 
-  .section {
-    margin-top: 25px;
-  }
-
-  .section h3 {
-    color: var(--section-title-color);
-    margin-bottom: 12px;
-    border-bottom: 1px solid var(--conclusion-border);
-    padding-bottom: 5px;
-    display: inline-block;
-  }
-
-  .section ul {
-    padding-right: 25px;
-    list-style-type: disc;
-  }
-
-  .section li {
-    margin-bottom: 10px;
-  }
-
-  .conclusion {
-    background-color: var(--highlight-bg);
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid var(--conclusion-border);
-    margin-top: 30px;
-  }
-</style>
-
-<div class="license-container">
-    <h2 class="main-title">الأوراق المطلوبة لمنح رخصة حفر بئر</h2>
-    
-    <p class="intro-text">وفقاً للقرارات النافذة وآخرها قرار رئاسة مجلس الوزراء رقم /8/ تاريخ 26/1/2023، يجب أن تكون المنطقة مسموح الحفر فيها للأغراض الزراعية.</p>
-
-    <div class="section">
-        <h3>1. الوثائق العامة المطلوبة</h3>
-        <ul>
-            <li>طلب يقدم من صاحب العلاقة مرفقاً به صورة عن الهوية الشخصية.</li>
-            <li>وثيقة قيد عقاري وبيان مساحي ومخطط مساحي للعقار المراد الحفر فيه، تبين ملكية صاحب العقار لأغلبية سهمية فيه.</li>
-            <li>استمارة (طلب) رخصة الحفر تتضمن البيانات اللازمة (البيانات الشخصية لصاحب العلاقة - المقنن المائي المطلوب - المساحة المراد ريها - رقم العقار - عمق الحفر المتوقع).</li>
-            <li>محضر كشف فني صادر عن مديرية الموارد المائية بالمحافظة (مصدق أصولاً من مدير الموارد).</li>
-            <li>تعهد من صاحب العلاقة يتضمن التزامه بشروط الترخيص مصدق من الكاتب بالعدل أصولاً.</li>
-            <li>تفويض من أغلبية المالكين في العقار إذا لم تحقق الحصة السهمية لطالب الترخيص هذه الأغلبية.</li>
-            <li>كتاب صادر عن البلدية المعنية يبين أن العقار المراد الحفر فيه يقع خارج المخطط التنظيمي.</li>
-        </ul>
+      <div class="conclusion-box">
+        <h3>الإجراءات النهائية</h3>
+        <p>يتم تدقيق الإضبارة من قبل مديرية الإدارة المتكاملة في الهيئة العامة للموارد المائية، ليصار إلى منح الرخصة من قبل السيد الوزير أو المدير العام في حال تفويضه.</p>
+      </div>
     </div>
-
-    <div class="section">
-        <h3>2. للأغراض الزراعية (وثائق إضافية)</h3>
-        <ul>
-            <li>كتاب صادر عن المؤسسة العامة لمياه الشرب والصرف الصحي بالمحافظة يتضمن المسافة بين موقع الحفر وأقرب بئر عائد لها، ويجب ألا تقل عن 1000 متر.</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h3>3. للأغراض غير الزراعية (صناعية، تجارية، سياحية، مداجن، مباقر)</h3>
-        <ul>
-            <li>يقدم الطلب إلى مؤسسة مياه الشرب المعنية بالمحافظة لإمكانية تخديم المنشأة من الشبكة العامة للشبكة المحتمل تنفيذها، وفي حال إمكانية ذلك لا حاجة لحفر البئر.</li>
-            <li>في حال عدم الإمكانية، تقوم المؤسسة العامة لمياه الشرب والصرف الصحي بمراسلة مديرية الموارد المائية بالمحافظة المعنية مبينة عدم إمكانية تخديم المنشأة من شبكات مياه الشرب.</li>
-            <li>وثيقة احتياج مائي صادرة عن مكتب هندسي متخصص ومصدقة من الجهة المختصة.</li>
-            <li>قرار ترخيص المنشأة.</li>
-            <li>كتاب توسط من الجهة صاحبة القرار في ترخيص المنشأة.</li>
-            <li>محضر كشف فني واستمارة (طلب) رخصة الحفر يدون عليها الاحتياج المائي المطلوب للمنشأة وعمق الحفر دون ذكر المساحة المراد ريها.</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h3>4. لأغراض الشرب والاستخدامات المنزلية (وثائق إضافية)</h3>
-        <ul>
-            <li>كتاب صادر عن المؤسسة العامة لمياه الشرب والصرف الصحي بالمحافظة يتضمن عدم إمكانية تخديم الموقع بمياه الشرب من الشبكة العامة.</li>
-            <li>مخطط كركوكي صادر عن البلدية المعنية يتضمن وجود عشرة منازل غير مخدمة بمياه الشرب وتقع خارج المخطط التنظيمي.</li>
-            <li>طلب تشكيل جمعية مستخدمي المياه على البئر المراد حفره لأغراض الشرب والاستخدامات المنزلية.</li>
-            <li>في حال منح رخصة حفر بئر لأغراض الشرب للجمعيات السكنية، يجب إرفاق كتاب توسط صادر عن الجهة المعنية وقرار ترخيص الجمعية السكنية.</li>
-        </ul>
-    </div>
-
-    <div class="section conclusion">
-        <h3>5. الإجراءات النهائية والتدقيق</h3>
-        <p>يتم تدقيق الإضبارة من قبل مديرية الإدارة المتكاملة في الهيئة العامة للموارد المائية والتأكد من استكمال كافة الوثائق المطلوبة وتحقق كافة الشروط اللازمة، ليصار إلى منح رخصة الحفر من قبل السيد الوزير أو السيد مدير عام الهيئة للموارد المائية في حال تفويضه.</p>
-    </div>
-</div>
-</div>
-</div>
-
-<!-- تنسيق CSS اختياري لتحسين المظهر -->
-<style>
-    .license-container {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        color: #333;
-        max-width: 800px;
-        margin: 20px auto;
-        padding: 20px;
-        background: #fafafa;
-        border-radius: 8px;
-    }
-    .main-title {
-        color: #2c3e50;
-        border-bottom: 2px solid #3498db;
-        padding-bottom: 10px;
-    }
-    .intro-text {
-        font-weight: bold;
-        background: #e8f4f8;
-        padding: 10px;
-        border-right: 4px solid #3498db;
-    }
-    .section {
-        margin-top: 20px;
-    }
-    .section h3 {
-        color: #2980b9;
-        margin-bottom: 10px;
-    }
-    .section ul {
-        padding-right: 20px;
-    }
-    .section li {
-        margin-bottom: 8px;
-    }
-    .conclusion {
-        background: #f4f6f7;
-        padding: 15px;
-        border-radius: 4px;
-        border: 1px solid #d6dbdf;
-    }
-</style>
-</p>
-      <p></p>
-    </div>
-
   </main>
 
   <footer class="app-footer">
     <div class="footer-top">
-
-      <div class="footer-col footer-brand">
-        <div class="footer-emblem">
-          <div class="brand-emblem"><img src="logo-emblem.png" alt="شعار منصة خدماتي"></div>
-          <div>
-            <h4 data-i18n="brandName">منصة خدماتي</h4>
-            <span data-i18n="brandTagline">البوابة الموحدة للخدمات الحكومية الرقمية</span>
-          </div>
-        </div>
-        <div class="system-status">
-          <span class="dot"></span>
-          <span data-i18n="systemOk">جميع الأنظمة تعمل بشكل طبيعي</span>
-        </div>
-      </div>
-
-      <nav class="footer-col" aria-label="روابط الدعم">
-        <h5 data-i18n="supportHeading">الدعم والمساعدة</h5>
-        <ul>
-          <li><a href="page19.html" data-i18n="linkContact">مركز الاتصال</a></li>
-          <li><a href="page20.html" data-i18n="linkFaq">الأسئلة الشائعة</a></li>
-          <li><a href="page21.html" data-i18n="linkComplaint">تقديم شكوى</a></li>
-        </ul>
-      </nav>
-
-      <nav class="footer-col" aria-label="روابط قانونية">
-        <h5 data-i18n="policiesHeading">السياسات</h5>
-        <ul>
-          <li><a href="page22.html" data-i18n="linkPrivacy">سياسة الخصوصية</a></li>
-          <li><a href="page23.html" data-i18n="linkTerms">الشروط والأحكام</a></li>
-        </ul>
-      </nav>
-
-      <div class="footer-col">
-        <h5 data-i18n="statusHeading">حالة النظام</h5>
-        <ul class="status-list">
-          <li><span class="status-pill ok"></span> <span data-i18n="statusPortal">بوابة الخدمات</span> <b data-i18n="statusAvailable">متاحة</b></li>
-          <li><span class="status-pill ok"></span> <span data-i18n="statusPayment">الدفع الإلكتروني</span> <b data-i18n="statusAvailable2">متاح</b></li>
-          <li><span class="status-pill warn"></span> <span data-i18n="statusNotify">خدمة الإشعارات</span> <b data-i18n="statusMaintenance">صيانة مجدولة</b></li>
-        </ul>
-      </div>
-
-    </div>
-
-    <div class="footer-bottom">
-      <span data-i18n="copyright">جميع الحقوق محفوظة © 2026 منصة خدماتي — تم تصميمها بكل حب و ايمان بسوريا الجديدة من قبل Sair Birro</span>
+      <div class="footer-col"><h5>الدعم والمساعدة</h5><ul><li>مركز الاتصال</li><li>الأسئلة الشائعة</li></ul></div>
+      <div class="footer-col"><h5>السياسات</h5><ul><li>سياسة الخصوصية</li><li>الشروط والأحكام</li></ul></div>
     </div>
   </footer>
 
 <script>
-  // ===== تبديل الوضع الفاتح / الداكن (بنفس مفتاح التخزين المستخدم في باقي صفحات المنصة) =====
   const THEME_STORAGE_KEY = 'khadamati-theme';
   const themeToggle = document.getElementById('theme-toggle');
   themeToggle.addEventListener('click', () => {
     const isLight = document.documentElement.getAttribute('data-theme') === 'light';
     const newTheme = isLight ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', newTheme);
-    try { localStorage.setItem(THEME_STORAGE_KEY, newTheme); } catch (err) {}
-  });
-
-  // ===== قاموس ترجمة مصغّر لعناصر الترويسة والفوتر (ثابتة في كل الصفحات) =====
-  const translations = {
-    brandName: { ar: "منصة خدماتي", en: "MyServices Portal" },
-    brandTagline: { ar: "البوابة الموحدة للخدمات الحكومية الرقمية", en: "The unified portal for digital government services" },
-    backHomeText: { ar: "الرئيسية", en: "Home" },
-    backHomeAria: { ar: "العودة إلى الصفحة الرئيسية", en: "Back to home page" },
-    themeToggleAria: { ar: "التبديل إلى الوضع الفاتح", en: "Switch to light mode" },
-    systemOk: { ar: "جميع الأنظمة تعمل بشكل طبيعي", en: "All systems are operating normally" },
-    supportHeading: { ar: "الدعم والمساعدة", en: "Support & Help" },
-    policiesHeading: { ar: "السياسات", en: "Policies" },
-    statusHeading: { ar: "حالة النظام", en: "System Status" },
-    linkContact: { ar: "مركز الاتصال", en: "Contact Center" },
-    linkFaq: { ar: "الأسئلة الشائعة", en: "FAQ" },
-    linkComplaint: { ar: "تقديم شكوى", en: "Submit a Complaint" },
-    linkPrivacy: { ar: "سياسة الخصوصية", en: "Privacy Policy" },
-    linkTerms: { ar: "الشروط والأحكام", en: "Terms & Conditions" },
-    statusPortal: { ar: "بوابة الخدمات", en: "Services portal" },
-    statusAvailable: { ar: "متاحة", en: "available" },
-    statusPayment: { ar: "الدفع الإلكتروني", en: "Online payment" },
-    statusAvailable2: { ar: "متاح", en: "available" },
-    statusNotify: { ar: "خدمة الإشعارات", en: "Notifications" },
-    statusMaintenance: { ar: "صيانة مجدولة", en: "scheduled maintenance" },
-    copyright: { ar: "جميع الحقوق محفوظة © 2026 منصة خدماتي — تم تصميمها بكل حب و ايمان بسوريا الجديدة من قبل Sair Birro", en: "© 2026 MyServices Portal. All rights reserved." },
-  };
-
-  let currentLang = 'ar';
-  const langToggle = document.getElementById('lang-toggle');
-  const homeBtn = document.querySelector('.home-btn');
-
-  function applyLanguage(lang){
-    currentLang = lang;
-    document.documentElement.lang = lang;
-    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (translations[key]){
-        // زر "الرئيسية" يحتوي على أيقونة SVG قبل النص، لذلك نحدّث النص فقط
-        if (el === homeBtn){
-          el.lastChild.textContent = ' ' + translations[key][lang];
-        } else {
-          el.textContent = translations[key][lang];
-        }
-      }
-    });
-    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
-      const key = el.getAttribute('data-i18n-aria');
-      if (translations[key]) el.setAttribute('aria-label', translations[key][lang]);
-    });
-
-    langToggle.textContent = lang === 'ar' ? 'English' : 'العربية';
-    langToggle.setAttribute('aria-label', lang === 'ar' ? 'Switch to English' : 'التبديل إلى العربية');
-  }
-
-  langToggle.addEventListener('click', () => {
-    applyLanguage(currentLang === 'ar' ? 'en' : 'ar');
+    localStorage.setItem(THEME_STORAGE_KEY, newTheme);
   });
 </script>
-
 </body>
 </html>
