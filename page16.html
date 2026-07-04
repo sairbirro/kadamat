@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>منصة خدماتي</title>
+<script>
+  // تطبيق الثيم المحفوظ فورًا قبل رسم الصفحة لتفادي وميض اللون الخاطئ
+  (function(){
+    try {
+      var saved = localStorage.getItem('khadamati-theme');
+      if (saved === 'light' || saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', saved);
+      }
+    } catch (err) { /* تجاهل بأمان إذا لم يكن التخزين متاحًا */ }
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy-900:#081C30;
+  --navy-800:#0F3055;
+  --navy-700:#14406E;
+  --teal-600:#1A5C72;
+  --gold-500:#C9A227;
+  --gold-300:#E6C767;
+  --ivory-50:#F3F6F9;
+  --text-light:#EAF1F8;
+  --text-muted:#B7C6D6;
+  --text-dark:#132330;
+  --glass-bg:rgba(255,255,255,0.16);
+  --glass-bg-strong:rgba(255,255,255,0.26);
+  --glass-border:rgba(255,255,255,0.32);
+  --shadow-deep: 0 20px 45px rgba(3,14,28,0.45);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html,body{
+  min-height:100%;
+  background-color:#0A2136;
+  font-family:'Tajawal', sans-serif;
+  color:var(--text-light);
+  overflow-x:hidden;
+  font-size:16px;
+}
+
+/* ===== الخلفية الثابتة على body مباشرة مع background-attachment:fixed
+   (الطريقة السليمة التي لا تُظهر مشكلة المستطيل عند التمرير على الموبايل) ===== */
+body{
+  background:
+    linear-gradient(rgba(6,18,30,0.5), rgba(6,18,30,0.5)),
+    url('bg-dark.jpg');
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  background-attachment: fixed, fixed;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
+
+html[data-theme="light"]{
+  background-color:#F3F6F9;
+  --navy-900:#F3F6F9;
+  --navy-800:#FFFFFF;
+  --navy-700:#EDF1F6;
+  --teal-600:#1A5C72;
+  --gold-500:#A9791A;
+  --gold-300:#C9A227;
+  --text-light:#16283A;
+  --text-muted:#1F4B3D;
+  --glass-bg:rgba(255,255,255,0.5);
+  --glass-bg-strong:rgba(255,255,255,0.65);
+  --glass-border:rgba(15,48,85,0.16);
+  --shadow-deep: 0 16px 34px rgba(15,48,85,0.12);
+}
+html[data-theme="light"] body{
+  background-image:
+    linear-gradient(rgba(255,255,255,0.55), rgba(255,255,255,0.55)),
+    url('bg-light.jpg');
+  background-size: cover, cover;
+}
+
+header.app-header, footer.app-footer{
+  text-shadow:0 1px 4px rgba(0,0,0,0.4);
+}
+html[data-theme="light"] header.app-header,
+html[data-theme="light"] footer.app-footer{
+  text-shadow:0 1px 3px rgba(255,255,255,0.7);
+  border-color:rgba(15,48,85,0.08);
+}
+
+/* ===== الترويسة ===== */
+header.app-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px clamp(16px, 4vw, 40px);
+  margin:14px clamp(14px, 4vw, 40px) 0;
+  border-radius:16px;
+  background:var(--glass-bg);
+  border:1px solid var(--glass-border);
+  backdrop-filter:blur(18px) saturate(140%);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
+  box-shadow:var(--shadow-deep);
+  position:sticky;
+  top:14px;
+  z-index:30;
+  transform:translateZ(0);
+  -webkit-transform:translateZ(0);
+  will-change:transform;
+  isolation:isolate;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.brand-emblem{
+  width:42px;height:42px;
+  border-radius:50%;
+  overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(201,162,39,0.08);
+  box-shadow:0 0 0 1px rgba(201,162,39,0.35);
+  flex-shrink:0;
+}
+.brand-emblem img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.brand-text h1{
+  font-family:'Cairo', sans-serif;
+  font-size:22px;
+  font-weight:800;
+  color:var(--text-light);
+  letter-spacing:.3px;
+}
+.brand-text span{
+  display:block;
+  font-size:14px;
+  font-weight:500;
+  color:var(--text-muted);
+  margin-top:2px;
+}
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* زر العودة إلى الصفحة الرئيسية */
+.home-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  font-family:'Tajawal', sans-serif;
+  font-size:14.375px;
+  font-weight:700;
+  color:var(--gold-300);
+  background:var(--glass-bg-strong);
+  border:1px solid var(--glass-border);
+  padding:7px 14px;
+  border-radius:999px;
+  cursor:pointer;
+  text-decoration:none;
+  backdrop-filter:blur(10px);
+  transition:border-color .25s ease, background .25s ease;
+  flex-shrink:0;
+}
+.home-btn:hover{ border-color:var(--gold-500); }
+.home-btn:focus-visible{
+  outline:2px solid var(--gold-500);
+  outline-offset:3px;
+}
+.home-btn svg{ width:16px;height:16px; }
+
+.theme-toggle{
+  width:32px;height:32px;
+  border-radius:50%;
+  border:1px solid var(--glass-border);
+  background:var(--glass-bg-strong);
+  color:var(--gold-300);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  backdrop-filter:blur(10px);
+  transition:border-color .25s ease, background .25s ease;
+  flex-shrink:0;
+}
+.theme-toggle svg{ width:15px;height:15px; }
+.theme-toggle:hover{ border-color:var(--gold-500); }
+.theme-toggle:focus-visible{
+  outline:2px solid var(--gold-500);
+  outline-offset:3px;
+}
+.theme-toggle .icon-moon{ display:none; }
+html[data-theme="light"] .theme-toggle .icon-sun{ display:none; }
+html[data-theme="light"] .theme-toggle .icon-moon{ display:block; }
+
+.footer-lang{
+  font-family:'Tajawal', sans-serif;
+  font-size:14.375px;
+  font-weight:700;
+  color:var(--gold-300);
+  background:var(--glass-bg-strong);
+  border:1px solid var(--glass-border);
+  padding:7px 13px;
+  border-radius:999px;
+  cursor:pointer;
+  backdrop-filter:blur(10px);
+  transition:border-color .25s ease, background .25s ease;
+  flex-shrink:0;
+}
+.footer-lang:hover{ border-color:var(--gold-500); }
+
+/* ===== منطقة فارغة تدفع الفوتر إلى أسفل الصفحة ===== */
+.empty-spacer{
+  flex:1;
+}
+
+/* ===== الفوتر ===== */
+footer.app-footer{
+  border-top:1px solid rgba(255,255,255,0.08);
+  background:transparent;
+  padding:44px clamp(16px, 5vw, 56px) 0;
+}
+.footer-top{
+  display:grid;
+  grid-template-columns:1.6fr 1fr 1fr 1.2fr;
+  gap:32px;
+  padding-bottom:34px;
+}
+.footer-col h5{
+  font-family:'Cairo', sans-serif;
+  font-size:17px;
+  font-weight:700;
+  color:var(--gold-300);
+  letter-spacing:.3px;
+  margin-bottom:14px;
+}
+.footer-emblem{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:14px;
+}
+.footer-emblem h4{
+  font-family:'Cairo', sans-serif;
+  font-size:20px;
+  font-weight:800;
+  color:var(--text-light);
+}
+.footer-emblem span{
+  display:block;
+  font-size:15px;
+  font-weight:500;
+  color:var(--text-muted);
+  margin-top:2px;
+}
+.system-status{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:15px;
+  font-weight:500;
+  color:var(--text-muted);
+  background:transparent;
+  border:1px solid var(--glass-border);
+  padding:7px 13px;
+  border-radius:999px;
+  width:fit-content;
+}
+.system-status .dot{
+  width:7px;height:7px;border-radius:50%;
+  background:#3FBF8F;
+  box-shadow:0 0 8px #3FBF8F;
+}
+.footer-col ul{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.footer-col ul li a{
+  color:var(--text-muted);
+  text-decoration:none;
+  font-size:15px;
+  font-weight:500;
+  transition:color .25s ease;
+}
+.footer-col ul li a:hover,
+.footer-col ul li a:focus-visible{
+  color:var(--gold-300);
+}
+.footer-col ul li a:focus-visible{
+  outline:2px solid var(--gold-500);
+  outline-offset:3px;
+  border-radius:3px;
+}
+.status-list li{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:14.5px;
+  font-weight:500;
+  color:var(--text-muted);
+}
+.status-list li b{
+  color:var(--text-light);
+  font-weight:700;
+}
+.status-pill{
+  width:8px;height:8px;
+  border-radius:50%;
+  flex-shrink:0;
+}
+.status-pill.ok{ background:#3FBF8F; box-shadow:0 0 6px #3FBF8F; }
+.status-pill.warn{ background:var(--gold-500); box-shadow:0 0 6px var(--gold-500); }
+
+.footer-bottom{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  padding:18px 0 22px;
+  border-top:1px solid rgba(255,255,255,0.08);
+  font-size:14px;
+  font-weight:500;
+  color:var(--text-muted);
+}
+
+@media (max-width:820px){
+  .footer-top{ grid-template-columns:1fr 1fr; }
+}
+@media (max-width:520px){
+  .footer-top{ grid-template-columns:1fr; }
+  header.app-header{ flex-wrap:wrap; }
+}
+
+/* ===== منطقة المحتوى الرئيسي ===== */
+main.page-content{
+  flex:1;
+  padding: 22px clamp(16px, 4vw, 40px) 10px;
+  max-width:1100px;
+  width:100%;
+  margin:0 auto;
+}
+.content-card{
+  background:var(--glass-bg);
+  border:1px solid var(--glass-border);
+  backdrop-filter:blur(18px) saturate(140%);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
+  box-shadow:var(--shadow-deep);
+  border-radius:18px;
+  padding:clamp(20px, 4vw, 36px);
+}
+.content-card h2.page-title{
+  font-family:'Cairo', sans-serif;
+  font-size:clamp(22px, 3vw, 28px);
+  font-weight:800;
+  color:var(--gold-300);
+  margin-bottom:10px;
+}
+.content-card > p.page-lead{
+  color:var(--text-light);
+  font-size:15.5px;
+  line-height:1.9;
+  margin-bottom:22px;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--glass-border);
+}
+.content-section{
+  margin-top:22px;
+}
+.content-section:first-of-type{
+  margin-top:0;
+}
+.content-section h3{
+  font-family:'Cairo', sans-serif;
+  font-size:18px;
+  font-weight:700;
+  color:var(--gold-300);
+  margin-bottom:12px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.content-section h3 .sec-num{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:26px;height:26px;
+  border-radius:50%;
+  background:var(--glass-bg-strong);
+  border:1px solid var(--glass-border);
+  color:var(--gold-300);
+  font-size:14px;
+  font-weight:800;
+  flex-shrink:0;
+}
+.req-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.req-list li{
+  position:relative;
+  padding-inline-start:26px;
+  color:var(--text-light);
+  font-size:15px;
+  line-height:1.85;
+}
+.req-list li::before{
+  content:"";
+  position:absolute;
+  inset-inline-start:0;
+  top:8px;
+  width:9px;height:9px;
+  border-radius:3px;
+  background:var(--gold-500);
+  transform:rotate(45deg);
+}
+.final-note{
+  margin-top:26px;
+  padding:16px 18px;
+  border-radius:14px;
+  background:var(--glass-bg-strong);
+  border:1px solid var(--glass-border);
+  color:var(--text-light);
+  font-size:15px;
+  line-height:1.9;
+}
+.final-note strong{
+  color:var(--gold-300);
+  font-family:'Cairo', sans-serif;
+}
+
+html[dir="ltr"] body{ font-family:'Tajawal','Inter',sans-serif; }
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:0.001s !important; transition-duration:0.001s !important; }
+}
+</style>
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-emblem"><img src="logo-emblem.png" alt="شعار منصة خدماتي"></div>
+      <div class="brand-text">
+        <h1 data-i18n="brandName">منصة خدماتي</h1>
+        <span data-i18n="brandTagline">البوابة الموحدة للخدمات الحكومية الرقمية</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <a class="home-btn" href="index.html" data-i18n="backHomeText" aria-label="العودة إلى الصفحة الرئيسية" data-i18n-aria="backHomeAria">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"></path><path d="M5.5 10v9a1 1 0 0 0 1 1H9.5a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-9"></path></svg>
+        الرئيسية
+      </a>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="التبديل إلى الوضع الفاتح" data-i18n-aria="themeToggleAria">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path></svg>
+      </button>
+      <button type="button" id="lang-toggle" class="footer-lang" aria-label="Switch to English">English</button>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <div class="content-card">
+      <h2 class="page-title" data-i18n="pageTitle">منح رخص حفر واستثمار الآبار</h2>
+      <p class="page-lead" data-i18n="pageLead">وفقاً للقرارات النافذة وآخرها قرار رئاسة مجلس الوزراء رقم /8/ تاريخ 26/1/2023، يجب أن تكون المنطقة مسموح الحفر فيها للأغراض الزراعية.</p>
+
+      <div class="content-section">
+        <h3><span class="sec-num">1</span> <span data-i18n="sec1Title">الوثائق العامة المطلوبة</span></h3>
+        <ul class="req-list">
+          <li data-i18n="sec1Item1">طلب يقدم من صاحب العلاقة مرفقاً به صورة عن الهوية الشخصية.</li>
+          <li data-i18n="sec1Item2">وثيقة قيد عقاري وبيان مساحي ومخطط مساحي للعقار، تبين ملكية صاحب العقار لأغلبية سهمية فيه.</li>
+          <li data-i18n="sec1Item3">استمارة رخصة الحفر متضمنة البيانات اللازمة (المقنن المائي، المساحة، رقم العقار، عمق الحفر).</li>
+          <li data-i18n="sec1Item4">محضر كشف فني صادر عن مديرية الموارد المائية ومصدق أصولاً.</li>
+          <li data-i18n="sec1Item5">تعهد من صاحب العلاقة يتضمن التزامه بشروط الترخيص مصدق من الكاتب بالعدل.</li>
+          <li data-i18n="sec1Item6">تفويض من أغلبية المالكين في العقار إذا لم تحقق الحصة السهمية لطالب الترخيص هذه الأغلبية.</li>
+          <li data-i18n="sec1Item7">كتاب صادر عن البلدية المعنية يبين أن العقار يقع خارج المخطط التنظيمي.</li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h3><span class="sec-num">2</span> <span data-i18n="sec2Title">للأغراض الزراعية (إضافات)</span></h3>
+        <ul class="req-list">
+          <li data-i18n="sec2Item1">كتاب صادر عن المؤسسة العامة لمياه الشرب يتضمن المسافة بين موقع الحفر وأقرب بئر (يجب ألا تقل عن 1000م).</li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h3><span class="sec-num">3</span> <span data-i18n="sec3Title">للأغراض غير الزراعية (صناعية، تجارية، سياحية)</span></h3>
+        <ul class="req-list">
+          <li data-i18n="sec3Item1">كتاب مؤسسة المياه بشأن إمكانية التخديم من الشبكة العامة.</li>
+          <li data-i18n="sec3Item2">وثيقة احتياج مائي صادرة عن مكتب هندسي متخصص ومصدقة من الجهة المختصة.</li>
+          <li data-i18n="sec3Item3">قرار ترخيص المنشأة وكتاب توسط من الجهة صاحبة القرار.</li>
+          <li data-i18n="sec3Item4">محضر كشف فني يوضح الاحتياج المائي وعمق الحفر دون ذكر المساحة.</li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <h3><span class="sec-num">4</span> <span data-i18n="sec4Title">لأغراض الشرب والاستخدامات المنزلية (إضافات)</span></h3>
+        <ul class="req-list">
+          <li data-i18n="sec4Item1">كتاب صادر عن المؤسسة العامة لمياه الشرب يتضمن عدم إمكانية التخديم من الشبكة.</li>
+          <li data-i18n="sec4Item2">مخطط كركوكي يتضمن وجود عشرة منازل غير مخدمة وتقع خارج المخطط التنظيمي.</li>
+          <li data-i18n="sec4Item3">طلب تشكيل جمعية مستخدمي المياه، وفي حال الجمعيات السكنية يرفق قرار ترخيص الجمعية.</li>
+        </ul>
+      </div>
+
+      <div class="final-note">
+        <strong data-i18n="finalNoteLabel">الإجراءات النهائية:</strong> <span data-i18n="finalNoteText">يتم تدقيق الإضبارة من قبل مديرية الإدارة المتكاملة في الهيئة العامة للموارد المائية، ليصار إلى منح رخصة الحفر من قبل السيد الوزير أو المدير العام في حال تفويضه.</span>
+      </div>
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <div class="footer-top">
+
+      <div class="footer-col footer-brand">
+        <div class="footer-emblem">
+          <div class="brand-emblem"><img src="logo-emblem.png" alt="شعار منصة خدماتي"></div>
+          <div>
+            <h4 data-i18n="brandName">منصة خدماتي</h4>
+            <span data-i18n="brandTagline">البوابة الموحدة للخدمات الحكومية الرقمية</span>
+          </div>
+        </div>
+        <div class="system-status">
+          <span class="dot"></span>
+          <span data-i18n="systemOk">جميع الأنظمة تعمل بشكل طبيعي</span>
+        </div>
+      </div>
+
+      <nav class="footer-col" aria-label="روابط الدعم">
+        <h5 data-i18n="supportHeading">الدعم والمساعدة</h5>
+        <ul>
+          <li><a href="page19.html" data-i18n="linkContact">مركز الاتصال</a></li>
+          <li><a href="page20.html" data-i18n="linkFaq">الأسئلة الشائعة</a></li>
+          <li><a href="page21.html" data-i18n="linkComplaint">تقديم شكوى</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-col" aria-label="روابط قانونية">
+        <h5 data-i18n="policiesHeading">السياسات</h5>
+        <ul>
+          <li><a href="page22.html" data-i18n="linkPrivacy">سياسة الخصوصية</a></li>
+          <li><a href="page23.html" data-i18n="linkTerms">الشروط والأحكام</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-col">
+        <h5 data-i18n="statusHeading">حالة النظام</h5>
+        <ul class="status-list">
+          <li><span class="status-pill ok"></span> <span data-i18n="statusPortal">بوابة الخدمات</span> <b data-i18n="statusAvailable">متاحة</b></li>
+          <li><span class="status-pill ok"></span> <span data-i18n="statusPayment">الدفع الإلكتروني</span> <b data-i18n="statusAvailable2">متاح</b></li>
+          <li><span class="status-pill warn"></span> <span data-i18n="statusNotify">خدمة الإشعارات</span> <b data-i18n="statusMaintenance">صيانة مجدولة</b></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span data-i18n="copyright">جميع الحقوق محفوظة © 2026 منصة خدماتي — تم تصميمها بكل حب و ايمان بسوريا الجديدة من قبل Sair Birro</span>
+    </div>
+  </footer>
+
+<script>
+  // ===== تبديل الوضع الفاتح / الداكن (بنفس مفتاح التخزين المستخدم في باقي صفحات المنصة) =====
+  const THEME_STORAGE_KEY = 'khadamati-theme';
+  const themeToggle = document.getElementById('theme-toggle');
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    const newTheme = isLight ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    try { localStorage.setItem(THEME_STORAGE_KEY, newTheme); } catch (err) {}
+  });
+
+  // ===== قاموس ترجمة مصغّر لعناصر هذه الصفحة فقط =====
+  const translations = {
+    brandName: { ar: "منصة خدماتي", en: "MyServices Portal" },
+    brandTagline: { ar: "البوابة الموحدة للخدمات الحكومية الرقمية", en: "The unified portal for digital government services" },
+    backHomeText: { ar: "الرئيسية", en: "Home" },
+    backHomeAria: { ar: "العودة إلى الصفحة الرئيسية", en: "Back to home page" },
+    themeToggleAria: { ar: "التبديل إلى الوضع الفاتح", en: "Switch to light mode" },
+    systemOk: { ar: "جميع الأنظمة تعمل بشكل طبيعي", en: "All systems are operating normally" },
+    supportHeading: { ar: "الدعم والمساعدة", en: "Support & Help" },
+    policiesHeading: { ar: "السياسات", en: "Policies" },
+    statusHeading: { ar: "حالة النظام", en: "System Status" },
+    linkContact: { ar: "مركز الاتصال", en: "Contact Center" },
+    linkFaq: { ar: "الأسئلة الشائعة", en: "FAQ" },
+    linkComplaint: { ar: "تقديم شكوى", en: "Submit a Complaint" },
+    linkPrivacy: { ar: "سياسة الخصوصية", en: "Privacy Policy" },
+    linkTerms: { ar: "الشروط والأحكام", en: "Terms & Conditions" },
+    statusPortal: { ar: "بوابة الخدمات", en: "Services portal" },
+    statusAvailable: { ar: "متاحة", en: "available" },
+    statusPayment: { ar: "الدفع الإلكتروني", en: "Online payment" },
+    statusAvailable2: { ar: "متاح", en: "available" },
+    statusNotify: { ar: "خدمة الإشعارات", en: "Notifications" },
+    statusMaintenance: { ar: "صيانة مجدولة", en: "scheduled maintenance" },
+    copyright: { ar: "جميع الحقوق محفوظة © 2026 منصة خدماتي — تم تصميمها بكل حب و ايمان بسوريا الجديدة من قبل Sair Birro", en: "© 2026 MyServices Portal. All rights reserved." },
+
+    pageTitle: { ar: "منح رخص حفر واستثمار الآبار", en: "Granting Well Drilling & Exploitation Licenses" },
+    pageLead: { ar: "وفقاً للقرارات النافذة وآخرها قرار رئاسة مجلس الوزراء رقم /8/ تاريخ 26/1/2023، يجب أن تكون المنطقة مسموح الحفر فيها للأغراض الزراعية.", en: "Under the regulations in force, most recently Prime Ministry Decision No. 8 dated 26/1/2023, drilling in the area must be permitted for agricultural purposes." },
+
+    sec1Title: { ar: "الوثائق العامة المطلوبة", en: "General Required Documents" },
+    sec1Item1: { ar: "طلب يقدم من صاحب العلاقة مرفقاً به صورة عن الهوية الشخصية.", en: "An application submitted by the applicant, accompanied by a copy of their personal ID." },
+    sec1Item2: { ar: "وثيقة قيد عقاري وبيان مساحي ومخطط مساحي للعقار، تبين ملكية صاحب العقار لأغلبية سهمية فيه.", en: "A property registration record, land survey statement, and survey plan showing the applicant's majority ownership share of the property." },
+    sec1Item3: { ar: "استمارة رخصة الحفر متضمنة البيانات اللازمة (المقنن المائي، المساحة، رقم العقار، عمق الحفر).", en: "A drilling license form including the required data (water allocation, area, property number, drilling depth)." },
+    sec1Item4: { ar: "محضر كشف فني صادر عن مديرية الموارد المائية ومصدق أصولاً.", en: "A duly certified technical inspection report issued by the Water Resources Directorate." },
+    sec1Item5: { ar: "تعهد من صاحب العلاقة يتضمن التزامه بشروط الترخيص مصدق من الكاتب بالعدل.", en: "A notarized undertaking from the applicant committing to the license conditions." },
+    sec1Item6: { ar: "تفويض من أغلبية المالكين في العقار إذا لم تحقق الحصة السهمية لطالب الترخيص هذه الأغلبية.", en: "An authorization from the majority of property co-owners if the applicant's share does not constitute a majority." },
+    sec1Item7: { ar: "كتاب صادر عن البلدية المعنية يبين أن العقار يقع خارج المخطط التنظيمي.", en: "A letter from the relevant municipality confirming the property is located outside the zoning plan." },
+
+    sec2Title: { ar: "للأغراض الزراعية (إضافات)", en: "For Agricultural Purposes (Additional Requirements)" },
+    sec2Item1: { ar: "كتاب صادر عن المؤسسة العامة لمياه الشرب يتضمن المسافة بين موقع الحفر وأقرب بئر (يجب ألا تقل عن 1000م).", en: "A letter from the General Establishment for Drinking Water stating the distance between the drilling site and the nearest well (must not be less than 1000m)." },
+
+    sec3Title: { ar: "للأغراض غير الزراعية (صناعية، تجارية، سياحية)", en: "For Non-Agricultural Purposes (Industrial, Commercial, Tourism)" },
+    sec3Item1: { ar: "كتاب مؤسسة المياه بشأن إمكانية التخديم من الشبكة العامة.", en: "A letter from the Water Establishment regarding the possibility of service from the public network." },
+    sec3Item2: { ar: "وثيقة احتياج مائي صادرة عن مكتب هندسي متخصص ومصدقة من الجهة المختصة.", en: "A water needs assessment issued by a specialized engineering office and certified by the competent authority." },
+    sec3Item3: { ar: "قرار ترخيص المنشأة وكتاب توسط من الجهة صاحبة القرار.", en: "The facility's licensing decision and an endorsement letter from the issuing authority." },
+    sec3Item4: { ar: "محضر كشف فني يوضح الاحتياج المائي وعمق الحفر دون ذكر المساحة.", en: "A technical inspection report specifying the water needs and drilling depth, without mentioning the area." },
+
+    sec4Title: { ar: "لأغراض الشرب والاستخدامات المنزلية (إضافات)", en: "For Drinking and Domestic Use (Additional Requirements)" },
+    sec4Item1: { ar: "كتاب صادر عن المؤسسة العامة لمياه الشرب يتضمن عدم إمكانية التخديم من الشبكة.", en: "A letter from the General Establishment for Drinking Water confirming the impossibility of network service." },
+    sec4Item2: { ar: "مخطط كركوكي يتضمن وجود عشرة منازل غير مخدمة وتقع خارج المخطط التنظيمي.", en: "A Karakoki plan showing at least ten unserved homes located outside the zoning plan." },
+    sec4Item3: { ar: "طلب تشكيل جمعية مستخدمي المياه، وفي حال الجمعيات السكنية يرفق قرار ترخيص الجمعية.", en: "A request to form a water users' association; for residential associations, the association's licensing decision must be attached." },
+
+    finalNoteLabel: { ar: "الإجراءات النهائية:", en: "Final Procedures:" },
+    finalNoteText: { ar: "يتم تدقيق الإضبارة من قبل مديرية الإدارة المتكاملة في الهيئة العامة للموارد المائية، ليصار إلى منح رخصة الحفر من قبل السيد الوزير أو المدير العام في حال تفويضه.", en: "The file is reviewed by the Integrated Management Directorate at the General Authority for Water Resources, after which the drilling license is granted by the Minister or the Director General if delegated." },
+  };
+
+  let currentLang = 'ar';
+  const langToggle = document.getElementById('lang-toggle');
+  const homeBtn = document.querySelector('.home-btn');
+
+  function applyLanguage(lang){
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[key]){
+        // زر "الرئيسية" يحتوي على أيقونة SVG قبل النص، لذلك نحدّث النص فقط
+        if (el === homeBtn){
+          el.lastChild.textContent = ' ' + translations[key][lang];
+        } else {
+          el.textContent = translations[key][lang];
+        }
+      }
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+      const key = el.getAttribute('data-i18n-aria');
+      if (translations[key]) el.setAttribute('aria-label', translations[key][lang]);
+    });
+
+    langToggle.textContent = lang === 'ar' ? 'English' : 'العربية';
+    langToggle.setAttribute('aria-label', lang === 'ar' ? 'Switch to English' : 'التبديل إلى العربية');
+  }
+
+  langToggle.addEventListener('click', () => {
+    applyLanguage(currentLang === 'ar' ? 'en' : 'ar');
+  });
+</script>
+
+</body>
+</html>
