@@ -494,7 +494,91 @@ html[dir="ltr"] body{ font-family:'Tajawal','Inter',sans-serif; }
 
     <!-- ===== 3) النص العام ===== -->
     <div class="content-card">
-      <p><div dir="rtl" lang="ar" class="license-container">
+      <p><style>
+  /* تعريف المتغيرات الافتراضية (الثيم النهاري) */
+  .license-container {
+    --bg-color-transparent: transparent; /* خلفية شفافة */
+    --text-color: #333333;               /* نص أسود */
+    --title-color: #2c3e50;              /* عنوان رئيسي غامق */
+    --section-title-color: #2980b9;      /* عناوين فرعية زرقاء */
+    --accent-color: #3498db;             /* لون مميز (الأزرق) */
+    --highlight-bg: #e8f4f8;             /* خلفية فاتحة للتمييز (اختياري) */
+    --conclusion-border: #d6dbdf;         /* لون إطار الخاتمة */
+  }
+
+  /* تعريف المتغيرات عند تفعيل الثيم الليلي (Media Query) */
+  @media (prefers-color-scheme: dark) {
+    .license-container {
+      --bg-color-transparent: transparent; /* تبقى شفافة */
+      --text-color: #f1f1f1;               /* نص أبيض */
+      --title-color: #ecf0f1;              /* عنوان رئيسي فاتح */
+      --section-title-color: #3498db;      /* عناوين فرعية زرقاء أفتح */
+      --accent-color: #5dade2;             /* لون مميز أفتح */
+      --highlight-bg: #1c3d5a;             /* خلفية داكنة للتمييز (تناسب النص الفاتح) */
+      --conclusion-border: #4a5a6a;        /* لون إطار الخاتمة الداكن */
+    }
+  }
+
+  /* تطبيق التنسيقات باستخدام المتغيرات */
+  .license-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--bg-color-transparent); /* استخدام الخلفية الشفافة */
+    color: var(--text-color);                     /* استخدام لون النص المتغير */
+    border-radius: 8px;
+    direction: rtl; /* ضمان الاتجاه من اليمين لليسار */
+  }
+
+  .main-title {
+    color: var(--title-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+  }
+
+  .intro-text {
+    font-weight: bold;
+    background-color: var(--highlight-bg);
+    padding: 15px;
+    border-right: 5px solid var(--accent-color);
+    border-radius: 4px;
+    margin-bottom: 25px;
+  }
+
+  .section {
+    margin-top: 25px;
+  }
+
+  .section h3 {
+    color: var(--section-title-color);
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--conclusion-border);
+    padding-bottom: 5px;
+    display: inline-block;
+  }
+
+  .section ul {
+    padding-right: 25px;
+    list-style-type: disc;
+  }
+
+  .section li {
+    margin-bottom: 10px;
+  }
+
+  .conclusion {
+    background-color: var(--highlight-bg);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--conclusion-border);
+    margin-top: 30px;
+  }
+</style>
+
+<div class="license-container">
     <h2 class="main-title">الأوراق المطلوبة لمنح رخصة حفر بئر</h2>
     
     <p class="intro-text">وفقاً للقرارات النافذة وآخرها قرار رئاسة مجلس الوزراء رقم /8/ تاريخ 26/1/2023، يجب أن تكون المنطقة مسموح الحفر فيها للأغراض الزراعية.</p>
@@ -545,6 +629,8 @@ html[dir="ltr"] body{ font-family:'Tajawal','Inter',sans-serif; }
         <h3>5. الإجراءات النهائية والتدقيق</h3>
         <p>يتم تدقيق الإضبارة من قبل مديرية الإدارة المتكاملة في الهيئة العامة للموارد المائية والتأكد من استكمال كافة الوثائق المطلوبة وتحقق كافة الشروط اللازمة، ليصار إلى منح رخصة الحفر من قبل السيد الوزير أو السيد مدير عام الهيئة للموارد المائية في حال تفويضه.</p>
     </div>
+</div>
+</div>
 </div>
 
 <!-- تنسيق CSS اختياري لتحسين المظهر -->
