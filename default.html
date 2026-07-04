@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ page.title | default: "منصة خدماتي" }} | البوابة الرسمية للخدمات السورية</title>
+<script>
+  // تطبيق الثيم المحفوظ فورًا قبل رسم الصفحة لتفادي وميض اللون الخاطئ
+  (function(){
+    try {
+      var saved = localStorage.getItem('khadamati-theme');
+      if (saved === 'light' || saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', saved);
+      }
+    } catch (err) { /* تجاهل بأمان إذا لم يكن التخزين متاحًا */ }
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
+</head>
+<body>
+
+  <div id="page-bg" aria-hidden="true"></div>
+
+  <!-- ===== شاشة التحميل ===== -->
+  <div id="loading-screen">
+    <div class="seal"><span class="seal-mark">خ</span></div>
+    <div class="loading-bar"></div>
+    <p data-i18n="loadingText">جارِ تحميل منصة خدماتي...</p>
+  </div>
+
+  <!-- ===== شاشة الانتقال بين الصفحات ===== -->
+  <div id="page-transition" aria-hidden="true">
+    <div class="mini-spinner"></div>
+    <p data-i18n="transitionText">جارٍ الانتقال إلى الخدمة...</p>
+  </div>
+
+  <!-- ===== التطبيق ===== -->
+  <div id="app">
+
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-emblem"><img src="{{ '/logo-emblem.png' | relative_url }}" alt="شعار منصة خدماتي"></div>
+        <div class="brand-text">
+          <h1 data-i18n="brandName">منصة خدماتي</h1>
+          <span data-i18n="brandTagline">البوابة الموحدة للخدمات الحكومية الرقمية</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        {% if page.url == '/' or page.url == '/index.html' %}
+        <div class="header-status">
+          <span class="dot"></span>
+          <span data-i18n="statusConnected">متصل بالنظام الرسمي</span>
+        </div>
+        {% else %}
+        <a class="home-btn" href="{{ '/' | relative_url }}" data-i18n="backHomeText" aria-label="العودة إلى الصفحة الرئيسية" data-i18n-aria="backHomeAria">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"></path><path d="M5.5 10v9a1 1 0 0 0 1 1H9.5a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-9"></path></svg>
+          الرئيسية
+        </a>
+        {% endif %}
+        <button id="theme-toggle" class="theme-toggle" type="button" data-i18n-aria="themeToggleAria" aria-label="التبديل إلى الوضع الفاتح">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path></svg>
+        </button>
+        <button type="button" id="lang-toggle" class="footer-lang" aria-label="Switch to English">English</button>
+      </div>
+    </header>
+
+    {{ content }}
+
+    <button id="back-to-top" aria-label="العودة إلى أعلى الصفحة" data-i18n-aria="backToTopAria">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="19" x2="12" y2="5"></line>
+        <polyline points="6 11 12 5 18 11"></polyline>
+      </svg>
+    </button>
+
+    <footer class="app-footer">
+      <div class="footer-top">
+
+        <div class="footer-col footer-brand">
+          <div class="footer-emblem">
+            <div class="brand-emblem"><img src="{{ '/logo-emblem.png' | relative_url }}" alt="شعار منصة خدماتي"></div>
+            <div>
+              <h4 data-i18n="brandName">منصة خدماتي</h4>
+              <span data-i18n="brandTagline">البوابة الموحدة للخدمات الحكومية الرقمية</span>
+            </div>
+          </div>
+          <div class="system-status">
+            <span class="dot"></span>
+            <span data-i18n="systemOk">جميع الأنظمة تعمل بشكل طبيعي</span>
+          </div>
+        </div>
+
+        <nav class="footer-col" aria-label="روابط الدعم">
+          <h5 data-i18n="supportHeading">الدعم والمساعدة</h5>
+          <ul>
+            <li><a href="{{ '/page19.html' | relative_url }}" tabindex="0" data-i18n="linkContact">مركز الاتصال</a></li>
+            <li><a href="{{ '/page20.html' | relative_url }}" tabindex="0" data-i18n="linkFaq">الأسئلة الشائعة</a></li>
+            <li><a href="{{ '/page21.html' | relative_url }}" tabindex="0" data-i18n="linkComplaint">تقديم شكوى</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="روابط قانونية">
+          <h5 data-i18n="policiesHeading">السياسات</h5>
+          <ul>
+            <li><a href="{{ '/page22.html' | relative_url }}" tabindex="0" data-i18n="linkPrivacy">سياسة الخصوصية</a></li>
+            <li><a href="{{ '/page23.html' | relative_url }}" tabindex="0" data-i18n="linkTerms">الشروط والأحكام</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-col">
+          <h5 data-i18n="statusHeading">حالة النظام</h5>
+          <ul class="status-list">
+            <li><span class="status-pill ok"></span> <span data-i18n="statusPortal">بوابة الخدمات</span> <b data-i18n="statusAvailable">متاحة</b></li>
+            <li><span class="status-pill ok"></span> <span data-i18n="statusPayment">الدفع الإلكتروني</span> <b data-i18n="statusAvailable2">متاح</b></li>
+            <li><span class="status-pill warn"></span> <span data-i18n="statusNotify">خدمة الإشعارات</span> <b data-i18n="statusMaintenance">صيانة مجدولة</b></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span data-i18n="copyright">جميع الحقوق محفوظة © 2026 منصة خدماتي — تم تصميمها بكل حب و ايمان بسوريا الجديدة من قبل Sair Birro</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="{{ '/script.js' | relative_url }}"></script>
+
+</body>
+</html>
