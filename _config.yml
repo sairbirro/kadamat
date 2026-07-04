@@ -1,0 +1,10 @@
+title: "منصة خدماتي"
+description: "البوابة الموحدة للخدمات الحكومية الرقمية"
+lang: ar
+
+# لا حاجة لأي إضافات (plugins) خاصة، GitHub Pages يدعم هذا الإعداد افتراضيًا
+markdown: kramdown
+
+# استثناء ملفات لا يجب أن يعالجها Jekyll أو ينشرها
+exclude:
+  - README.md
