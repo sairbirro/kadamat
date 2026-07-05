@@ -242,7 +242,7 @@
     padding:40px clamp(16px, 5vw, 56px) 12px;
   }
   .hero-eyebrow{
-    font-size:14px; /* تكبير كلمة "مرحباً بك" */
+    font-size:12px;
     color:var(--gold-300);
     letter-spacing:1.5px;
     font-weight:700;
@@ -251,7 +251,7 @@
   .hero h2{
     font-family:'Cairo', sans-serif;
     font-weight:800;
-    font-size:clamp(22px, 2.5vw, 34px); /* تكبير ملموس لعنوان الترحيب الرئيسي */
+    font-size:clamp(18px, 2vw, 26px);
     color:var(--text-light);
     max-width:720px;
     line-height:1.5;
@@ -259,7 +259,7 @@
   .hero p{
     margin-top:14px;
     color:var(--text-muted);
-    font-size:16.5px; /* تكبير النص الوصفي الرئيسي */
+    font-size:14px;
     font-weight:500;
     max-width:680px;
     line-height:1.8;
@@ -278,11 +278,11 @@
     flex-shrink:0;
     font-family:'Tajawal', sans-serif;
     font-weight:700;
-    font-size:15px; /* تكبير خطوط التبويبات */
+    font-size:13px;
     color:var(--text-muted);
     background:var(--glass-bg);
     border:1px solid var(--glass-border);
-    padding:12px 24px; /* زيادة مساحة النقر */
+    padding:9px 18px;
     border-radius:999px;
     backdrop-filter:blur(10px);
     cursor:pointer;
@@ -346,7 +346,7 @@
   }
   .card-media{
     position:relative;
-    height:170px; /* زيادة ارتفاع الصورة قليلاً */
+    height:150px;
     overflow:hidden;
   }
   .card-media img{
@@ -377,17 +377,17 @@
     border-radius:999px;
   }
   .card-body{
-    padding:20px 22px 24px; /* زيادة الحشوة الداخلية للبطاقة */
+    padding:16px 18px 20px;
   }
   .card-body h3{
     font-family:'Cairo', sans-serif;
-    font-size:18px; /* تكبير عناوين الخدمات */
+    font-size:16px;
     font-weight:700;
     color:var(--text-light);
     margin-bottom:8px;
   }
   .card-body p{
-    font-size:14.5px; /* تكبير نصوص البطاقة */
+    font-size:13px;
     font-weight:500;
     color:var(--text-muted);
     line-height:1.8;
@@ -397,7 +397,7 @@
     display:inline-flex;
     align-items:center;
     gap:6px;
-    font-size:14.5px; /* تكبير رابط الانتقال */
+    font-size:13px;
     font-weight:700;
     color:var(--gold-300);
     cursor:pointer;
@@ -421,13 +421,13 @@
   .search-box input{
     width:100%;
     font-family:'Tajawal', sans-serif;
-    font-size:16px; /* تكبير حجم خط شريط البحث لمنع ظهورها بشكل صغير */
+    font-size:14px;
     color:var(--text-light);
     background:var(--glass-bg);
     border:1px solid var(--glass-border);
     backdrop-filter:blur(10px);
     border-radius:12px;
-    padding:14px 48px 14px 44px;
+    padding:11px 40px 11px 36px;
     outline:none;
     transition:border-color .25s ease, background .25s ease;
   }
@@ -787,7 +787,7 @@
   html[dir="ltr"] body{ font-family:'Tajawal','Inter',sans-serif; }
   html[dir="ltr"] .search-box .search-icon{ right:auto; left:15px; }
   html[dir="ltr"] .search-box .search-clear{ left:auto; right:12px; }
-  html[dir="ltr"] .search-box input{ padding:13px 44px 13px 40px; }
+  html[dir="ltr"] .search-box input{ padding:11px 36px 11px 32px; }
   html[dir="ltr"] #back-to-top{ left:auto; right:26px; }
   html[dir="ltr"] .card-badge{ right:auto; left:12px; }
 
