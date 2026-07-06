@@ -182,8 +182,8 @@
       card1Desc:{ ar:"خدمات وزارة الخارجية السورية.", en:"Syrian Ministry of Foreign Affairs Services." },
       card2Title:{ ar:"وزارة الخارجية السورية - الاحوال المدنية", en:"Syrian Ministry of Foreign Affairs - Civil Registry" },
       card2Desc:{ ar:"تسجيل حالات الزواج الطلاق الولادة و الوفيات", en:"Registration of Marriage, Divorce, Birth, and Death cases" },
-      card3Title:{ ar:"سداد الرسوم الحكومية", en:"Pay Government Fees" },
-      card3Desc:{ ar:"عرض وسداد جميع الفواتير والمخالفات المستحقة.", en:"View and pay all outstanding bills and fines." },
+      card3Title:{ ar:"وزارة الخارجية السورية - التواصل", en:"Syrian Ministry of Foreign Affairs - Contact" },
+      card3Desc:{ ar:"وزارة الخارجية السورية - التواصل وتحميل تطبيق حجز المواعيد", en:"Syrian Ministry of Foreign Affairs - Contact and Appointment Booking App Download" },
 
       card4Title:{ ar:"إصدار شهادة ميلاد", en:"Issue a Birth Certificate" },
       card4Desc:{ ar:"استخراج شهادة ميلاد إلكترونية معتمدة فورًا.", en:"Get an instantly certified digital birth certificate." },
