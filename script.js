@@ -178,12 +178,12 @@
       statusMaintenance: { ar: "صيانة مجدولة", en: "scheduled maintenance" },
       copyright: { ar: "جميع الحقوق محفوظة © 2026 منصة خدماتي — بوابة تجريبية للأغراض التصميمية", en: "© 2026 MyServices Portal. All rights reserved — a demo portal for design purposes." },
 
-      card1Title:{ ar:"وزارة الخارجية السورية", en:"Syrian Ministry of Foreign Affairs" },
-      card1Desc:{ ar:"خدمات وزارة الخارجية السورية.", en:"Syrian Ministry of Foreign Affairs Services." },
+      card1Title:{ ar:"وزارة الخارجية السورية - إصدار جوازات السفر", en:"Syrian Ministry of Foreign Affairs - Passport Issuance" },
+      card1Desc:{ ar:"خدمات إصدار جوازات السفر وتجديدها:", en:"Passport Issuance and Renewal Services" },
       card2Title:{ ar:"وزارة الخارجية السورية - الاحوال المدنية", en:"Syrian Ministry of Foreign Affairs - Civil Registry" },
       card2Desc:{ ar:"تسجيل حالات الزواج الطلاق الولادة و الوفيات", en:"Registration of Marriage, Divorce, Birth, and Death cases" },
       card3Title:{ ar:"وزارة الخارجية السورية - التواصل", en:"Syrian Ministry of Foreign Affairs - Contact" },
-      card3Desc:{ ar:"وزارة الخارجية السورية - التواصل وتحميل تطبيق حجز المواعيد", en:"Syrian Ministry of Foreign Affairs - Contact and Appointment Booking App Download" },
+      card3Desc:{ ar:"التواصل وتحميل تطبيق حجز المواعيد", en:"Contact and Appointment Booking App Download" },
 
       card4Title:{ ar:"إصدار شهادة ميلاد", en:"Issue a Birth Certificate" },
       card4Desc:{ ar:"استخراج شهادة ميلاد إلكترونية معتمدة فورًا.", en:"Get an instantly certified digital birth certificate." },
