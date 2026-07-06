@@ -178,8 +178,8 @@
       statusMaintenance: { ar: "صيانة مجدولة", en: "scheduled maintenance" },
       copyright: { ar: "جميع الحقوق محفوظة © 2026 منصة خدماتي — بوابة تجريبية للأغراض التصميمية", en: "© 2026 MyServices Portal. All rights reserved — a demo portal for design purposes." },
 
-      card1Title:{ ar:"تجديد الهوية الوطنية", en:"Renew National ID" },
-      card1Desc:{ ar:"تجديد بطاقة الهوية إلكترونيًا واستلامها دون مراجعة.", en:"Renew your ID card online and receive it without an office visit." },
+      card1Title:{ ar:"وزارة الخارجية السورية", en:"Syrian Ministry of Foreign Affairs" },
+      card1Desc:{ ar:"خدمات وزارة الخارجية السورية.", en:"Syrian Ministry of Foreign Affairs Services." },
       card2Title:{ ar:"إصدار جواز سفر", en:"Issue a Passport" },
       card2Desc:{ ar:"تقديم طلب جواز جديد ومتابعة حالة الإصدار.", en:"Submit a new passport request and track the issuance status." },
       card3Title:{ ar:"سداد الرسوم الحكومية", en:"Pay Government Fees" },
